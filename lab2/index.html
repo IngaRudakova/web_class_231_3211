@@ -154,54 +154,9 @@
                       <label for="phone">Номер телефона</label>
                       <input type="tel" id="phone" name="phone" required>
 
-                      <label for="delivery-time">Укажите время доставки</label>
-                      <input type="time" id="delivery-time" name="delivery-time" min="07:00" max="23:00" step="300" required>
-                      <div id="time-options" class="time-options">
-                          <div class="time-option" data-time="07:00">07:00</div>
-                          <div class="time-option" data-time="08:00">08:00</div>
-                          <div class="time-option" data-time="09:00">09:00</div>
-                          <div class="time-option" data-time="10:00">10:00</div>
-                          <div class="time-option" data-time="11:00">11:00</div>
-                          <div class="time-option" data-time="12:00">12:00</div>
-                          <div class="time-option" data-time="13:00">13:00</div>
-                          <div class="time-option" data-time="14:00">14:00</div>
-                          <div class="time-option" data-time="15:00">15:00</div>
-                          <div class="time-option" data-time="16:00">16:00</div>
-                          <div class="time-option" data-time="17:00">17:00</div>
-                          <div class="time-option" data-time="18:00">18:00</div>
-                          <div class="time-option" data-time="19:00">19:00</div>
-                          <div class="time-option" data-time="20:00">20:00</div>
-                          <div class="time-option" data-time="21:00">21:00</div>
-                          <div class="time-option" data-time="22:00">22:00</div>
-                          <div class="time-option" data-time="23:00">23:00</div>
-                      </div>
-
-                      <h5><i>Доступное время доставки с 7:00 до 23:00</i></h5>
-
-                      <script>
-                          const deliveryTimeInput = document.getElementById('delivery-time');
-                          const timeOptions = document.getElementById('time-options');
-
-                          // Показать список времени на фокусе
-                          deliveryTimeInput.addEventListener('focus', () => {
-                              timeOptions.style.display = 'block';
-                          });
-
-                          // Скрыть список времени, если кликнули вне его
-                          document.addEventListener('click', (event) => {
-                              if (!timeOptions.contains(event.target) && event.target !== deliveryTimeInput) {
-                                  timeOptions.style.display = 'none';
-                              }
-                          });
-
-                          // Установить выбранное время в input
-                          timeOptions.addEventListener('click', (event) => {
-                              if (event.target.classList.contains('time-option')) {
-                                  deliveryTimeInput.value = event.target.getAttribute('data-time');
-                                  timeOptions.style.display = 'none';
-                              }
-                          });
-                      </script>
+                      <label for="address">Адрес доставки</label>
+                      <input type="text" id="address" name="address" required>
+                      <h5><i>Доставка осуществляется только по Москве</i></h5>
 
                       <legend class="sidebar-header">Время доставки:</legend>
                       <div class="radio-container">
