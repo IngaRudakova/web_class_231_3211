@@ -1,0 +1,111 @@
+#order-form {
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.order-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Две равные колонки */
+    gap: 20px; /* Промежуток между блоками */
+}
+
+h2 {
+    text-align: center;
+    margin: 20px;
+    grid-column: span 2;
+}
+.block {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Растягиваем блоки на всю доступную ширину */
+    flex-basis: 0; /* Начальная ширина */
+    flex-shrink: 1; /* Позволяем блокам уменьшаться при необходимости */
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
+h5 {
+    margin: -10px 0 10px 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+select, input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.btn_form {
+    padding: 10px 20px;
+    border: 2px solid #000; /* Черный контур */
+    border-radius: 4px;
+    background-color: #fff; /* Белый фон */
+    color: #000; /* Черный текст */
+    cursor: pointer;
+    margin-right: 10px; /* Отступ справа для расположения кнопок рядом */
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px; /* Пространство между кнопками */
+}
+
+
+.checkbox-container, .radio-container {
+    display: flex;
+    align-items: center; /* Вертикальное выравнивание чекбокса/радиокнопки с текстом */
+    margin-bottom: 5px; /* Пространство между каждым чекбоксом/радиокнопкой */
+}
+
+.checkbox-container input, .radio-container input {
+    margin-right: 10px; /* Пространство между чекбоксом/радиокнопкой и меткой */
+}
+
+/* Необязательно: Пользовательские стили для чекбоксов и радиокнопок */
+.checkbox-container input[type="checkbox"],
+.radio-container input[type="radio"] {
+    width: 15px; /* Настройка размера */
+    height: 15px; /* Настройка размера */
+    cursor: pointer; /* Изменение курсора при наведении */
+}
+
+.checkbox-container label, .radio-container label {
+    margin-top: -8px; /* Отступ сверху для текста, чтобы он был на уровне кнопки */
+}
+
+.time-options {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    position: absolute;
+    background: white;
+    z-index: 10;
+}
+.time-option {
+    cursor: pointer;
+    padding: 5px;
+}
+.time-option:hover {
+    background: #f0f0f0;
+}
+
+
+
+
+
+
+

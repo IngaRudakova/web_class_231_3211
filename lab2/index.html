@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style_lunch.css">
     <link rel="stylesheet" href="style_first.css">
+    <link rel="stylesheet" href="forma.css">
 
     <title>Собрать ланч</title>
 </head>
@@ -100,6 +101,131 @@
             </div>
           </div>
         </section>
+
+        <section id="order-form">
+          <h2>Сделать заказ</h2>
+          <form action="https://httpbin.org/post" method="POST">
+              <div class="order-container">
+                  <div class="block">
+                      <h3>Ваш заказ</h3>
+
+                      <label for="soups">Суп:</label>
+                      <select id="soup" name="soup" required>
+                          <option value="">Выберите суп</option>
+                          <option value="s_chicken">Суп с курицей</option>
+                          <option value="s_mushroom">Суп с грибами</option>
+                          <option value="s_fish">Суп с рыбой</option>
+                      </select>
+
+                      <label for="main-dishes">Главное блюдо:</label>
+                      <select id="main-dishes" name="main-dishes" required>
+                          <option value="">Выберите главное блюдо</option>
+                          <option value="chicken_potato">Курица с картошкой</option>
+                          <option value="lazaniy">Лазанья</option>
+                          <option value="rise_with_meat">Гуляш с рисом</option>
+                      </select>
+
+                      <label for="drinks">Напиток:</label>
+                      <select id="drinks" name="drinks" required>
+                          <option value="">Выберите напиток</option>
+                          <option value="fruit_drink">Компот</option>
+                          <option value="smuzi">Смузи</option>
+                          <option value="carrot_drink">Морковный сок</option>
+                      </select>
+
+                      <label for="comments">Комментарии:</label>
+                      <textarea id="comments" name="comments"></textarea>
+                  </div>
+
+                  <div class="block">
+                      <h3>Данные клиента</h3>
+
+                      <label for="name">Имя</label>
+                      <input type="text" id="name" name="name" required>
+
+                      <label for="email">Email</label>
+                      <input type="email" id="email" name="email" required>
+
+                      <div class="checkbox-container">
+                          <input type="checkbox" id="subscribe" name="subscribe" checked>
+                          <label for="subscribe">Получать информацию о скидках и акциях</label>
+                      </div>
+
+                      <label for="phone">Номер телефона</label>
+                      <input type="tel" id="phone" name="phone" required>
+
+                      <label for="delivery-time">Укажите время доставки</label>
+                      <input type="time" id="delivery-time" name="delivery-time" min="07:00" max="23:00" step="300" required>
+                      <div id="time-options" class="time-options">
+                          <div class="time-option" data-time="07:00">07:00</div>
+                          <div class="time-option" data-time="08:00">08:00</div>
+                          <div class="time-option" data-time="09:00">09:00</div>
+                          <div class="time-option" data-time="10:00">10:00</div>
+                          <div class="time-option" data-time="11:00">11:00</div>
+                          <div class="time-option" data-time="12:00">12:00</div>
+                          <div class="time-option" data-time="13:00">13:00</div>
+                          <div class="time-option" data-time="14:00">14:00</div>
+                          <div class="time-option" data-time="15:00">15:00</div>
+                          <div class="time-option" data-time="16:00">16:00</div>
+                          <div class="time-option" data-time="17:00">17:00</div>
+                          <div class="time-option" data-time="18:00">18:00</div>
+                          <div class="time-option" data-time="19:00">19:00</div>
+                          <div class="time-option" data-time="20:00">20:00</div>
+                          <div class="time-option" data-time="21:00">21:00</div>
+                          <div class="time-option" data-time="22:00">22:00</div>
+                          <div class="time-option" data-time="23:00">23:00</div>
+                      </div>
+
+                      <h5><i>Доступное время доставки с 7:00 до 23:00</i></h5>
+
+                      <script>
+                          const deliveryTimeInput = document.getElementById('delivery-time');
+                          const timeOptions = document.getElementById('time-options');
+
+                          // Показать список времени на фокусе
+                          deliveryTimeInput.addEventListener('focus', () => {
+                              timeOptions.style.display = 'block';
+                          });
+
+                          // Скрыть список времени, если кликнули вне его
+                          document.addEventListener('click', (event) => {
+                              if (!timeOptions.contains(event.target) && event.target !== deliveryTimeInput) {
+                                  timeOptions.style.display = 'none';
+                              }
+                          });
+
+                          // Установить выбранное время в input
+                          timeOptions.addEventListener('click', (event) => {
+                              if (event.target.classList.contains('time-option')) {
+                                  deliveryTimeInput.value = event.target.getAttribute('data-time');
+                                  timeOptions.style.display = 'none';
+                              }
+                          });
+                      </script>
+
+                      <legend class="sidebar-header">Время доставки:</legend>
+                      <div class="radio-container">
+                          <input type="radio" name="time" id="time1">
+                          <label for="time1">Как можно скорее</label>
+                      </div>
+                      <div class="radio-container">
+                          <input type="radio" name="time" id="time2">
+                          <label for="time2">К указанному времени</label>
+                      </div>
+
+                      <label for="delivery-time">Укажите время доставки</label>
+                      <input type="time" id="delivery-time" name="delivery-time" min="07:00" max="23:00" step="300" required>
+                      <h5><i>Доступное время доставки с 7:00 до 23:00</i></h5>
+                      
+                      <div class="button-container">
+                          <button class="btn_form" type="reset">Сбросить</button>
+                          <button class="btn_form" type="submit">Отправить</button>
+                      </div>
+                  </div>
+              </div>
+          </form>
+      </section>
+
       </main>
       
     <footer id="contacts" style="background-color: black; color: white; padding: 20px;">
