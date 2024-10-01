@@ -87,23 +87,6 @@ button:hover {
     margin-top: -8px; /* Отступ сверху для текста, чтобы он был на уровне кнопки */
 }
 
-.time-options {
-    display: none;
-    border: 1px solid #ccc;
-    padding: 10px;
-    position: absolute;
-    background: white;
-    z-index: 10;
-}
-.time-option {
-    cursor: pointer;
-    padding: 5px;
-}
-.time-option:hover {
-    background: #f0f0f0;
-}
-
-
 
 
 
