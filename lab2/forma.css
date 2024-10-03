@@ -7,7 +7,7 @@
 }
 .order-container {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Две равные колонки */
+    grid-template-columns: 1fr 1fr; 
     gap: 20px; /* Промежуток между блоками */
 }
 
@@ -20,9 +20,9 @@ h2 {
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Растягиваем блоки на всю доступную ширину */
-    flex-basis: 0; /* Начальная ширина */
-    flex-shrink: 1; /* Позволяем блокам уменьшаться при необходимости */
+    flex-grow: 1; 
+    flex-basis: 0; 
+    flex-shrink: 1; 
 }
 
 h3 {
@@ -47,10 +47,10 @@ select, input, textarea {
 }
 .btn_form {
     padding: 10px 20px;
-    border: 2px solid #000; /* Черный контур */
+    border: 2px solid tomato; 
     border-radius: 4px;
-    background-color: #fff; /* Белый фон */
-    color: #000; /* Черный текст */
+    background-color: #fff; 
+    color: #000; 
     cursor: pointer;
     margin-right: 10px; /* Отступ справа для расположения кнопок рядом */
 }
@@ -67,24 +67,24 @@ button:hover {
 
 .checkbox-container, .radio-container {
     display: flex;
-    align-items: center; /* Вертикальное выравнивание чекбокса/радиокнопки с текстом */
-    margin-bottom: 5px; /* Пространство между каждым чекбоксом/радиокнопкой */
+    align-items: center; 
+    margin-bottom: 5px; 
 }
 
 .checkbox-container input, .radio-container input {
-    margin-right: 10px; /* Пространство между чекбоксом/радиокнопкой и меткой */
+    margin-right: 10px; 
 }
 
-/* Необязательно: Пользовательские стили для чекбоксов и радиокнопок */
+
 .checkbox-container input[type="checkbox"],
 .radio-container input[type="radio"] {
-    width: 15px; /* Настройка размера */
-    height: 15px; /* Настройка размера */
-    cursor: pointer; /* Изменение курсора при наведении */
+    width: 15px; 
+    height: 15px; 
+    cursor: pointer; 
 }
 
 .checkbox-container label, .radio-container label {
-    margin-top: -8px; /* Отступ сверху для текста, чтобы он был на уровне кнопки */
+    margin-top: -8px; 
 }
 
 
