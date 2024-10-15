@@ -87,7 +87,9 @@ button:hover {
     margin-top: -8px; 
 }
 
-
+#totalCost {
+    font-weight: bold;
+}
 
 
 

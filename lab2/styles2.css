@@ -1,0 +1,363 @@
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: white;
+    color: #333;
+    padding: 10px 20px;
+    text-align: left;
+}
+
+h1 {
+    margin-top: 0; 
+}
+
+nav {
+    display: flex;
+    justify-content: flex-start;
+}
+
+nav a {
+    color: #333; 
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 1.5; 
+}
+
+nav a:first-child {
+    margin-left: 0; 
+}
+
+nav a:hover {
+    color: orange; 
+}
+
+a.active {
+    color: tomato;
+}
+
+main {
+    padding: 10px 20px; 
+    margin-top: 0; 
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+
+.dishes {     
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.dish {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 35px;
+    filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13));
+    cursor: pointer;
+    text-align: left;
+}
+
+.dish:hover {
+    border: 2px solid tomato;
+}
+
+
+.dish img {
+    width: 100%;
+    border-radius: 35px;
+}
+
+.dish-info {
+    margin-bottom: 10px;
+}
+
+.dish .price {
+    font-size: 20px;
+    color: black;
+    margin-bottom: 5px; 
+}
+
+.dish .name {
+    font-size: 18px;
+    color: black;
+    margin-top: 0; 
+}
+
+.dish .weight {
+    color: gray;
+    font-size: 14px;
+    margin-top: 15px; 
+}
+
+.dish button {
+    background-color: transparent; 
+    color: black; 
+    padding: 10px 30px; 
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none; 
+    width: 100%;
+    font-size: 18px;
+}
+
+.dish:hover button {
+    background-color: tomato; 
+    color: white; 
+}
+
+
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: left;
+    padding: 30px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: tomato;
+}
+
+
+@media (max-width: 800px) {
+    .dishes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    h2 {
+        text-align: center;
+    }
+    .dishes {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 400px) {
+    
+}
+
+
+.placeholder {
+    color: gray;
+    pointer-events: none;
+}
+
+#order-form {
+    padding: 20px;
+    background-color: white;
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+#order-form .order-item {
+    text-align: left;
+}
+
+#order-form h2 {
+    margin-top: 0;
+}
+
+#order-form form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#order-form form div:not(.radio-group) {
+    width: 45%; 
+}
+
+#order-form h3 {
+    text-align: left;
+}
+
+#order-form label {
+    display: block;
+    text-align: left;
+}
+
+#order-form select,
+#order-form input:not([type="checkbox"]):not([type="radio"]),
+#order-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+
+#order-form textarea {
+    max-width: 100%; 
+    min-width: 100%; 
+    max-height: 300px;
+    min-height: 50px;
+    margin: 0 auto;
+}
+
+@media (max-width: 800px) {
+    #order-form form div:not(.radio-group):not(.order-item) {
+        width: 45%;
+    }
+
+    #order-form textarea {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+
+#order-form button {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    padding: 10px 40px;
+    cursor: pointer;
+    border-radius: 0;
+    margin-top: 10px;
+}
+
+#order-form button[type="reset"] {
+    margin-right: 10px;
+}
+
+.note {
+    font-size: 12px;
+    color: gray;
+    text-align: left;
+    margin: 0;
+    margin-bottom: 20px; 
+    font-style: italic; 
+}
+
+.checkbox-label,
+.radio-label {
+    display: flex; 
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.checkbox-label input,
+.radio-label input {
+    margin-right: 10px;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%; 
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-start; 
+    width: 100%;
+}
+
+.checkbox-label {
+    margin-bottom: 20px; 
+}
+
+
+.time {
+    margin-bottom: 10px;
+}
+
+
+#total-price {
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+#total-price .price-value {
+    font-size: 20px; 
+    display: inline-block;
+
+}
+
+.order-item p {
+    margin: 0; 
+    line-height: 1.2; 
+}
+
+.order-item p + p {
+    margin-bottom: 20px; 
+    width: 300px;
+}
+
+
+
+
+#no-selection-message {
+    display: none; 
+}
+
+
+#no-selection-message {
+    display: block; 
+    margin-bottom: 20px;
+}
+
+#soup-order, #main-order, #drink-order, #total-price-block {
+    display: none; 
+}
+
+/* Стили для ширины экрана ≤800px */
+@media (max-width: 800px) {
+    .dishes{
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* Стили для ширины экрана ≤600px */
+  @media (max-width: 600px) {
+    .dishes {
+      grid-template-columns: 1fr;
+    }
+  
+    .dishes {
+      padding: 20px 30px;
+    }
+  }
+
+  /* Стили для ширины экрана ≤400px */
+@media (max-width: 400px) {
+    table {
+      width: 100%;
+    }
+  }
+ 
+  * {
+    box-sizing: border-box;
+  }
