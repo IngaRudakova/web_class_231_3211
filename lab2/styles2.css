@@ -150,18 +150,20 @@ footer a:hover {
 }
 
 @media (max-width: 600px) {
-    h2 {
-        text-align: center;
+    .h2 {
+      grid-template-columns: 1fr;
     }
+  
     .dishes {
-        grid-template-columns: 1fr;
+      padding: 20px 30px;
     }
-}
+  }
 
 @media (max-width: 400px) {
-    
-}
-
+    table {
+      width: 100%;
+    }
+  }
 
 .placeholder {
     color: gray;
@@ -333,30 +335,7 @@ footer a:hover {
     display: none; 
 }
 
-/* Стили для ширины экрана ≤800px */
-@media (max-width: 800px) {
-    .dishes{
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  /* Стили для ширины экрана ≤600px */
-  @media (max-width: 600px) {
-    .dishes {
-      grid-template-columns: 1fr;
-    }
-  
-    .dishes {
-      padding: 20px 30px;
-    }
-  }
 
-  /* Стили для ширины экрана ≤400px */
-@media (max-width: 400px) {
-    table {
-      width: 100%;
-    }
-  }
  
   * {
     box-sizing: border-box;

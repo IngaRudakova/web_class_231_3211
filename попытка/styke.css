@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+.category {
+    margin: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.filters {
+    margin-bottom: 10px;
+}
+
+.filter-button {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.filter-button.active {
+    background-color: #007BFF;
+    color: white;
+}
+
+.dish-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dish {
+    border: 1px solid #aaa;
+    padding: 10px;
+    margin: 5px;
+    width: calc(33.333% - 10px);
+}

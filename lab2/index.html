@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles2.css">
+    <link rel="stylesheet" href="style_lunch.css">
+    <link rel="stylesheet" href="style_first.css">
+    <link rel="stylesheet" href="forma.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <title>Собрать ланч</title>
 </head>
@@ -20,14 +23,46 @@
     <main>
         <section id="soup-section">
             <h2>Выберите суп</h2>
+            <div class="filters">
+                <button data-kind="fish" class="filter-button">Рыбный</button>
+                <button data-kind="meat" class="filter-button">Мясной</button>
+                <button data-kind="veg" class="filter-button">Вегетарианский</button>
+            </div>
             <div class="dishes"></div>
         </section>
         <section id="main-section">
             <h2>Выберите главное блюдо</h2>
+            <div class="filters">
+                <button data-kind="fish" class="filter-button">Рыбный</button>
+                <button data-kind="meat" class="filter-button">Мясной</button>
+                <button data-kind="veg" class="filter-button">Вегетарианский</button>
+            </div>
+            <div class="dishes"></div>
+        </section>
+        <section id="salat-section">
+            <h2>Выберите салат</h2>
+            <div class="filters">
+                <button data-kind="fish" class="filter-button">Рыбный</button>
+                <button data-kind="meat" class="filter-button">Мясной</button>
+                <button data-kind="veg" class="filter-button">Вегетарианский</button>
+            </div>
+            <div class="dishes"></div>
+        </section>
+        <section id="desert-section">
+            <h2>Выберите десерт</h2>
+            <div class="filters">
+                <button data-kind="small" class="filter-button">Маленькая порция</button>
+                <button data-kind="medium" class="filter-button">Средняя порция</button>
+                <button data-kind="large" class="filter-button">Большая порция</button>
+            </div>
             <div class="dishes"></div>
         </section>
         <section id="drink-section">
             <h2>Выберите напиток</h2>
+            <div class="filters">
+                <button data-kind="hot" class="filter-button">Холодный</button>
+                <button data-kind="cold" class="filter-button">Горячий</button>  
+            </div>
             <div class="dishes"></div>
         </section>
         <section id="order-form">
@@ -45,6 +80,14 @@
                     <div class="order-item" id="main-order" style="display: none;">
                         <p><strong>Главное блюдо</strong></p>
                         <p id="selected-main-dish">Не выбрано</p>
+                    </div>
+                    <div class="order-item" id="salat-order" style="display: none;">
+                        <p><strong>Салат</strong></p>
+                        <p id="selected-salat">Не выбрано</p>
+                    </div>
+                    <div class="order-item" id="desert-order" style="display: none;">
+                        <p><strong>Десерт</strong></p>
+                        <p id="selected-desert">Не выбрано</p>
                     </div>
                     <div class="order-item" id="drink-order" style="display: none;">
                         <p><strong>Напиток</strong></p>
