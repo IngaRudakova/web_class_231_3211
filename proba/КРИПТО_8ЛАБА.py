@@ -16,15 +16,15 @@ def convert_string_to_ids(new_string, symbol_to_id):
     
     return converted_list
 
-# Пример использования
+# ТУТ НИЧЕ НЕ ТРОГАТЬ ЭТО АЛФАВИТ
 input_string = "абвгдежзийклмнопрстуфхцчшщъыьэюя"
 symbol_to_id = create_symbol_to_id_map(input_string)
-#print("Словарь символы-идентификаторы:", symbol_to_id)
+print("AЛФАВИТ:\n", symbol_to_id, '\n')
 
-new_string = "леопарднеможетизменитьсвоихпятентчк"
+#СЮДА СВОЮ ФРАЗУ 
+new_string = "нужновытягиватьногизптнасколькопозволяютпростынитчк"
 converted_list = convert_string_to_ids(new_string, symbol_to_id)
-
-print("Преобразованная строка в список идентификаторов:", converted_list)
+print("ЭТО МЫ ПРИСВАИВАЕМ КАЖДОЙ БУКВЕ ЗНАЧЕНИЕ АЛФАВИТА:\n", converted_list)
 
 
 def decimal_to_6bit_binary(n):
@@ -36,21 +36,19 @@ def decimal_to_6bit_binary(n):
 
     return binary_6bit
 
-# Пример использования
-"""for i in range(32):
-    decimal_number = converted_list[i]
-    binary_6bit_result = decimal_to_6bit_binary(decimal_number)
-    print(f"{decimal_number} в 6-битном двоичном виде: {binary_6bit_result}")"""
-f=''
+# ЭТО КОЛ-ВО ВСЕГО СИМВОЛОВ В ФРАЗЕ 
+f = ''
 for i in range(len(converted_list)):
     decimal_number = converted_list[i]
     binary_6bit_result = decimal_to_6bit_binary(decimal_number)
 
     f += str(binary_6bit_result)
-    print(f"{decimal_number} в 6-битном двоичном виде: {binary_6bit_result}")
+    #print(f"{decimal_number} в 6-битном двоичном виде: {binary_6bit_result}")
 print(f)
-print(len(f))
+print('ЭТО КОЛ-ВО ВСЕГО СИМВОЛОВ В ФРАЗЕ ', len(f), '\n')
 
+
+#В ПЕРЕМННУЮ ТЕКСТ ВСТАВИТЬ СВОЮ ПОЛУЧИВНУЮСЯ СТРОКУ ИЗ ВТОРОГО НОМЕРА ДО ТОЙ ЧАСТИ ГДЕ ОНА ЗАЦИКЛИЛАСЬ 
 text = '010101101010000'
 def add_binary_strings(str1, str2):
     # Повторяем короткую строку, чтобы она соответствовала длине длинной строки
@@ -79,8 +77,9 @@ def add_binary_strings(str1, str2):
 
 
 result = add_binary_strings(text, f)
-print(result)
+print('ПЕРЕВОД СТРОКИ ДЕСЯТИЧНОЙ В БИНАРНУЮ\n',result)
 print(len(result))
+
 def add_spaces_every_five_chars(input_string):
     # Создаем список, куда будем добавлять куски строки
     parts = []
@@ -95,7 +94,7 @@ def add_spaces_every_five_chars(input_string):
     
     return result_string
 
-# Исходная строка
+
 
 
 # Применяем функцию к строке в переменной result

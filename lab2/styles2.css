@@ -1,4 +1,5 @@
 
+/* Общие стили */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -53,7 +54,37 @@ h2 {
     margin-bottom: 10px;
 }
 
+/* Кнопки фильтра */
+.filters {
+    margin-bottom: 10px;
+    text-align: left; 
+    display: flex; 
+    justify-content: flex-start; 
+}
 
+.filter-button {
+    background-color: transparent; 
+    color: black; 
+    padding: 10px 30px; 
+    border-radius: 10px;
+    margin-right: 10px; 
+    cursor: pointer;
+    border: none; 
+    font-size: 18px;
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+.filter-button:hover {
+    background-color: rgba(0, 61, 15, 0.6); 
+    color: white; 
+}
+
+.filter-button.active {
+    background-color: rgba(0, 113, 28, 0.393); 
+    color: white; 
+}
+
+/* Блюда */
 .dishes {     
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -74,8 +105,6 @@ h2 {
 .dish:hover {
     border: 2px solid tomato;
 }
-
-
 .dish img {
     width: 100%;
     border-radius: 35px;
@@ -120,17 +149,14 @@ h2 {
     color: white; 
 }
 
-
-
+/* Подвал */
 footer {
     background-color: black;
     color: white;
     text-align: left;
     padding: 30px;
     width: 100%;
-    position: absolute;
-    left: 0;
-    right: 0;
+    position: relative; 
 }
 
 footer a {
@@ -142,28 +168,59 @@ footer a:hover {
     color: tomato;
 }
 
-
+/* Медиа-запросы */
 @media (max-width: 800px) {
     .dishes {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr); /* Количество колонок: 3 */
+    }
+
+    .dishes h2 {
+        text-align: center; /* Выравнивание заголовка по центру */
     }
 }
 
 @media (max-width: 600px) {
-    .h2 {
-      grid-template-columns: 1fr;
+    h1 {
+        text-align: center; /* Выравнивание заголовка по центру */
+        font-size: calc(24px + 4px); /* Увеличение шрифта на 4px */
     }
-  
+
+    nav {
+        flex-direction: column; /* Вертикальное направление элементов */
+        align-items: center; /* Выравнивание по центру */
+    }
+
+    nav a {
+        font-size: calc(16px + 4px); /* Увеличение шрифта на 4px */
+    }
+
     .dishes {
-      padding: 20px 30px;
+        grid-template-columns: repeat(2, 1fr); /* Количество колонок: 2 */
+        padding: 20px 30px; /* Увеличение отступов */
     }
-  }
+
+    .about img {
+        width: 100%; /* Ширина изображения: 100% */
+    }
+
+    .dish .price,
+    .dish .name,
+    .dish .weight {
+        font-size: calc(20px - 2px); /* Уменьшение шрифта на 2px */
+    }
+}
 
 @media (max-width: 400px) {
     table {
-      width: 100%;
+        width: 100%; /* Ширина таблицы 100% */
     }
-  }
+
+    .dish .price,
+    .dish .name,
+    .dish .weight {
+        font-size: calc(20px - 4px); /* Уменьшение шрифта еще на 2px */
+    }
+}
 
 .placeholder {
     color: gray;

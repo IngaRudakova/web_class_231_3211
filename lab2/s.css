@@ -1,0 +1,253 @@
+/* Общие стили */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff; /* Используем именованный цвет */
+    overflow-x: hidden;
+  }
+  
+  header {
+    background-color: #fff;
+    color: #333;
+    padding: 10px 20px;
+    text-align: left;
+  }
+  
+  h1 {
+    margin-top: 0;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  nav a {
+    color: #333;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 1.5;
+  }
+  
+  nav a:first-child {
+    margin-left: 0;
+  }
+  
+  nav a:hover {
+    color: orange;
+  }
+  
+  a.active {
+    color: tomato;
+  }
+  
+  main {
+    padding: 20px; /* Унифицированный отступ */
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  /* Кнопки фильтра */
+  .filters {
+    margin-bottom: 10px;
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .filter-button {
+    background-color: transparent;
+    color: black;
+    padding: 10px 30px;
+    border-radius: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .filter-button:hover {
+    background-color: rgba(0, 61, 15, 0.6);
+    color: white;
+  }
+  
+  .filter-button.active {
+    background-color: rgba(0, 113, 28, 0.393);
+    color: white;
+  }
+  
+  
+  /* Блюда */
+  .dishes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Адаптивная сетка */
+    gap: 10px;
+  }
+  
+  .dish {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 35px;
+    filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13));
+    cursor: pointer;
+    text-align: left;
+    transition: border 0.3s; /* Добавили плавное изменение границы */
+  }
+  
+  .dish:hover {
+    border: 2px solid tomato;
+  }
+  
+  .dish img {
+    width: 100%;
+    border-radius: 35px;
+    margin-bottom: 10px; /* Добавили отступ снизу */
+  }
+  
+  .dish-info {
+    margin-bottom: 10px;
+  }
+  
+  .dish .price {
+    font-size: 20px;
+    color: black;
+    margin-bottom: 5px;
+  }
+  
+  .dish .name {
+    font-size: 18px;
+    color: black;
+    margin-top: 0;
+  }
+  
+  .dish .weight {
+    color: gray;
+    font-size: 14px;
+    margin-top: 15px;
+  }
+  
+  .dish button {
+    background-color: transparent;
+    color: black;
+    padding: 10px 30px;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    font-size: 18px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .dish:hover button {
+    background-color: tomato;
+    color: white;
+  }
+  
+  
+  /* Подвал */
+  footer {
+    background-color: black;
+    color: white;
+    text-align: left;
+    padding: 30px;
+  }
+  
+  footer a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    color: tomato;
+  }
+  
+  /* Форма заказа -  добавлено */
+  #order-form {
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+  }
+  
+  #order-form .order-item {
+    text-align: left;
+    margin-bottom: 15px; /* Отступ между элементами формы */
+  }
+  
+  #order-form h2 {
+    margin-top: 0;
+  }
+  
+  #order-form form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  #order-form form div {
+    width: 48%; /* Почти 50%, чтобы избежать переполнения */
+    box-sizing: border-box; /* Чтобы padding/border не влияли на ширину */
+  }
+  
+  
+  #order-form h3 {
+    text-align: left;
+  }
+  
+  #order-form label {
+    display: block;
+    margin-bottom: 5px; /* Отступ между label и input */
+  }
+  
+  #order-form select,
+  #order-form input[type="text"],
+  #order-form input[type="email"],
+  #order-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+  #order-form textarea {
+    min-height: 100px;
+    resize: vertical; /* Разрешаем только вертикальное изменение размера */
+  }
+  
+  #order-form button[type="submit"] { /* Стиль кнопки отправки */
+    background-color: tomato;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  #order-form button[type="submit"]:hover {
+    background-color: orange;
+  }
+  
+  /* Медиа-запросы -  упрощено и оптимизировано */
+  @media (max-width: 768px) {
+    #order-form form div {
+      width: 100%; /* Одна колонка на маленьких экранах */
+    }
+    .dishes {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+  }
+  
+  

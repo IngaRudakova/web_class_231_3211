@@ -24,7 +24,7 @@ const dishes = [
         price: 400,
         category: 'soup', 
         count: '450 мл', 
-        image: 'soup4.jpeg'
+        image: 'soup4.jpg'
     },
     {
         keyword: 's_fish', 
@@ -42,7 +42,7 @@ const dishes = [
         price: 250,
         category: 'soup', 
         count: '400 мл', 
-        image: 'soup5.jpeg'
+        image: 'soup5.jpg'
     },
     {
         keyword: 's_miso',
@@ -51,7 +51,7 @@ const dishes = [
         price: 450,
         category: 'soup', 
         count: '300 мл', 
-        image: 'soup6.jpeg'
+        image: 'soup6.jpg'
     },
     {
         keyword: 'chicken_potato', 
@@ -87,7 +87,7 @@ const dishes = [
         price: 600, 
         category: 'main', 
         count: '650 г',
-        image: 'dish4.jpeg'
+        image: 'dish4.jpg'
     },
     {
         keyword: 'fish_max', 
@@ -96,7 +96,7 @@ const dishes = [
         price: 900, 
         category: 'main', 
         count: '1050 г',
-        image: 'dish5.jpeg'
+        image: 'dish5.jpg'
     },
     {
         keyword: 'mushroom_pasta', 
@@ -105,7 +105,7 @@ const dishes = [
         price: 500, 
         category: 'main', 
         count: '600 г',
-        image: 'dish6.jpeg'
+        image: 'dish6.jpg'
     },
     {
         keyword: 'veget_pasta', 
@@ -114,7 +114,7 @@ const dishes = [
         price: 400, 
         category: 'main', 
         count: '600 г',
-        image: 'dish7.jpeg'
+        image: 'dish7.jpg'
     },
     {
         keyword: 'salat_rukola', 
@@ -123,7 +123,7 @@ const dishes = [
         price: 300, 
         category: 'salat', 
         count: '400 г',
-        image: 'salat1.jpeg'
+        image: 'salat1.jpg'
     },
     {
         keyword: 'salat_imbir', 
@@ -132,7 +132,7 @@ const dishes = [
         price: 350, 
         category: 'salat', 
         count: '400 г',
-        image: 'salat2.jpeg'
+        image: 'salat2.jpg'
     },
     {
         keyword: 'salat_gov', 
@@ -141,7 +141,7 @@ const dishes = [
         price: 400, 
         category: 'salat', 
         count: '300 г',
-        image: 'salat3.jpeg'
+        image: 'salat3.jpg'
     },
     {
         keyword: 'salat_indeika', 
@@ -150,7 +150,7 @@ const dishes = [
         price: 350, 
         category: 'salat', 
         count: '250 г',
-        image: 'salat4.jpeg'
+        image: 'salat4.jpg'
     },
     {
         keyword: 'salat_tun', 
@@ -159,7 +159,7 @@ const dishes = [
         price: 400, 
         category: 'salat', 
         count: '250 г',
-        image: 'salat5.jpeg'
+        image: 'salat5.jpg'
     },
     {
         keyword: 'salat_krevetka', 
@@ -168,7 +168,7 @@ const dishes = [
         price: 500, 
         category: 'salat', 
         count: '350 г',
-        image: 'salat6.jpeg'
+        image: 'salat6.jpg'
     },
     {
         keyword: 'napoleon', 
@@ -177,7 +177,7 @@ const dishes = [
         price: 300, 
         category: 'desert', 
         count: '150 г',
-        image: 'desert1.jpeg'
+        image: 'desert1.jpg'
     },
     {
         keyword: 'ice_cream_min', 
@@ -186,7 +186,7 @@ const dishes = [
         price: 200, 
         category: 'desert', 
         count: '90 г',
-        image: 'desert2.jpeg'
+        image: 'desert2.jpg'
     },
     {
         keyword: 'ice_cream_max', 
@@ -195,7 +195,7 @@ const dishes = [
         price: 400, 
         category: 'desert', 
         count: '300 г',
-        image: 'desert3.jpeg'
+        image: 'desert3.jpg'
     },
     {
         keyword: 'panakota', 
@@ -204,7 +204,7 @@ const dishes = [
         price: 350, 
         category: 'desert', 
         count: '250 г',
-        image: 'desert4.jpeg'
+        image: 'desert4.jpg'
     },
     {
         keyword: 'ulitka', 
@@ -213,7 +213,7 @@ const dishes = [
         price: 250, 
         category: 'desert', 
         count: '60 г',
-        image: 'desert5.jpeg'
+        image: 'desert5.jpg'
     },
     {
         keyword: 'halva', 
@@ -222,7 +222,7 @@ const dishes = [
         price: 150, 
         category: 'desert', 
         count: '50 г',
-        image: 'desert6.jpeg'
+        image: 'desert6.jpg'
     },
     {
         keyword: 'fruit_drink', 
@@ -258,7 +258,7 @@ const dishes = [
         price: 90, 
         category: 'drink', 
         count: '400 мл',
-        image: 'drink4.jpeg'
+        image: 'drink4.jpg'
     },
     {
         keyword: 'smuzi_banan', 
@@ -267,7 +267,7 @@ const dishes = [
         price: 350, 
         category: 'drink', 
         count: '250 мл',
-        image: 'drink5.jpeg'
+        image: 'drink5.jpg'
     },
     {
         keyword: 'sprite', 
@@ -276,7 +276,7 @@ const dishes = [
         price: 250, 
         category: 'drink', 
         count: '500 мл',
-        image: 'drink6.jpeg'
+        image: 'drink6.jpg'
     },
     {
         keyword: 'americano', 
@@ -285,7 +285,7 @@ const dishes = [
         price: 200, 
         category: 'drink', 
         count: '100 мл',
-        image: 'drink7.jpeg'
+        image: 'drink7.jpg'
     },
     {
         keyword: 'mokko', 
@@ -294,7 +294,7 @@ const dishes = [
         price: 200, 
         category: 'drink', 
         count: '200 мл',
-        image: 'drink8.jpeg'
+        image: 'drink8.jpg'
     },
     {
         keyword: 'tea', 
@@ -303,7 +303,7 @@ const dishes = [
         price: 150, 
         category: 'drink', 
         count: '300 мл',
-        image: 'drink9.jpeg'
+        image: 'drink9.jpg'
     }
 
     
