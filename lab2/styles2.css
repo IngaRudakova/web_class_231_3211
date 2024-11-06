@@ -447,3 +447,35 @@ footer a:hover {
 .dessert-info {
   font-size: 13px; /* На 2 пункта меньше, чем основная подпись */
 }
+
+@media (max-width: 767px) {
+    .lunch-grid {
+      grid-template-columns: 1fr; /* Менее 768px - одна колонка */
+    }
+  
+    .lunch-item {
+      flex-direction: row; /* Менее 768px - элементы идут друг под другом */
+      
+      justify-content: flex-start;
+    }
+  
+    .dish-item {
+      margin-right: 10; 
+    }
+  
+    .dish-item img {
+      margin-right: 0; /* Убираем отступ у изображения */
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .lunch-grid {
+      grid-template-columns: repeat(2, 1fr); /* Между 768px и 1200px - две колонки */
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .lunch-grid {
+      grid-template-columns: repeat(3, 1fr); /* Более 1200px - три колонки */
+    }
+  }
