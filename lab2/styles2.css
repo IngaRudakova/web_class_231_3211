@@ -397,3 +397,53 @@ footer a:hover {
   * {
     box-sizing: border-box;
   }
+
+  .lunch-block {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.lunch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  place-items: center;
+  padding-top: 10px;
+}
+
+.lunch-item {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    
+}
+
+.dish-item {
+    display: flex;
+  flex-direction: column; /* Располагаем элементы вертикально */
+  align-items: center;    /* Центрируем элементы по горизонтали */
+  margin-right: 10px;
+  white-space: nowrap;
+      
+  }
+
+.dish-item img {
+    
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  
+  transition: transform 0.3s ease; /* Для анимации при наведении */
+}
+
+.dish-item img:hover {
+  transform: translateY(-5px) scale(1.1);
+}
+
+.dessert-info {
+  font-size: 13px; /* На 2 пункта меньше, чем основная подпись */
+}

@@ -176,6 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const drinkSection = document.querySelector("#drink-section .dishes");
 
     dishes.sort((a, b) => a.name.localeCompare(b.name));
+///////////////////
 
     // Функция для отображения блюд
     const renderDishes = (section, category) => {
