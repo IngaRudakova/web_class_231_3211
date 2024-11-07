@@ -294,11 +294,18 @@ document.addEventListener("DOMContentLoaded", () => {
             orderForm.totalPrice.textContent = `${total}₽`;
         }
     };
-
+    // Когда происходит клик по одному из этих элементов,
+    //  выполняется функция-обработчик. Внутри нее сначала извлекается
+    //   значение атрибута data-dish с помощью метода getAttribute("data-dish").
+    //    Это значение сохраняется в переменную dishKeyword.
     // Найти в массиве и добавить в заказ
     document.querySelectorAll(".dish").forEach(dishElement => {
         dishElement.addEventListener("click", (event) => {
-            const dishKeyword = dishElement.getAttribute("data-dish");
+            const dishKeyword = dishElement.getAttribute("data-dish"); 
+            // Метод find ищет первый элемент массива,
+            //  удовлетворяющий условию, переданному в виде функции.
+            //   Здесь условие заключается в том, что keyword блюда
+            //    совпадает с dishKeyword.
             const dish = dishes.find(d => d.keyword === dishKeyword);
             if (dish) {
                 selectedDishes[dish.category] = dish;
@@ -306,7 +313,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
-
+    // При клике на кнопку сброса объект
+    //  selectedDishes очищается,
+    //   устанавливая все его свойства (soup, main, salat, desert, drink) в null.
     // Обработчик для кнопки сброса
     document.querySelector('button[type="reset"]').addEventListener('click', () => {
         selectedDishes = {
@@ -318,67 +327,93 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         updateOrder();
     });
-/////////////
-    const combos = [
-        { name: 'Ланч 1', items: ['soup', 'main', 'salat', 'drink'] },
-        { name: 'Ланч 2', items: ['soup', 'main', 'drink'] },
-        { name: 'Ланч 3', items: ['soup', 'salat', 'drink'] },
-        { name: 'Ланч 4', items: ['main', 'salat', 'drink'] },
-        { name: 'Ланч 5', items: ['main', 'drink'] },
-    ];
 
-    function validateOrder(selectedItems) {
-        let dishes = Object.keys(selectedItems).filter(key => key !== 'десерт' && selectedItems[key] !== null);
-        let text = '';
+    // Функция для проверки выбранных блюд
+function validateOrder() {
+    // Получаем массив выбранных блюд, исключая null значения
+    const selectedDishesArray = Object.values(selectedDishes).filter(dish => dish !== null);
 
-        if (dishes.length === 0 && selectedItems['десерт'] === null) {
-            text = 'Ничего не выбрано. Выберите блюда для заказа'
-        } else if (!(dishes.includes('drink')) && dishes.length > 0) {
-            text = 'Выберите напиток';
-        } else if ((dishes.includes('drink') || !(selectedItems['десерт'] === null))) {
-            text = 'Выберите главное блюдо';
-        }
-
-        if (dishes.includes('soup') && !dishes.includes('main') && !dishes.includes('salat')) {
-            text = 'Выберите главное блюдо или салат';
-        } else if (dishes.includes('salat') && (!dishes.includes('main') || !dishes.includes('soup'))) {
-            text = 'Выберите суп или главное блюдо';
-        }
-
-        let result;
-        combos.forEach( function (combo) {
-            if (JSON.stringify(dishes) === JSON.stringify(combo.items)) {
-                result = {valid: true, message: 'Все блюда успешно выбраны'};
-            }
-        });
-        if (result) {
-            return result;
-        }
-        return {valid: false, message: text};
+    // Проверяем, есть ли выбранные блюда
+    if (selectedDishesArray.length === 0) {
+        // Если нет, показываем уведомление и возвращаем false
+        showNotification('Ничего не выбрано. Выберите блюда для заказа');
+        return false;
     }
 
-    document.querySelector('form').addEventListener('submit', function (event) {
-        const result = validateOrder(selectedDishes);
-        if (!result.valid) {
-            console.log(result);
-            event.preventDefault();
-            displayNotification(result.message);
-        }
+    // Проверяем, есть ли суп в выбранных блюдах
+    const hasSoup = selectedDishesArray.some(dish => dish.category === 'soup');
+    // Проверяем, есть ли главное блюдо в выбранных блюдах
+    const hasMainCourse = selectedDishesArray.some(dish => dish.category === 'main');
+    // Проверяем, есть ли салат в выбранных блюдах
+    const hasSalad = selectedDishesArray.some(dish => dish.category === 'salat');
+    // Проверяем, есть ли напиток в выбранных блюдах
+    const hasDrink = selectedDishesArray.some(dish => dish.category === 'drink');
+
+    // Проверяем, есть ли напиток в выбранных блюдах
+    if (!hasDrink) {
+        // Если нет, показываем уведомление и возвращаем false
+        showNotification('Выберите напиток');
+        return false;
+    }
+
+    // Проверяем, есть ли суп, но нет главного блюда и салата
+    if (hasSoup && !hasMainCourse && !hasSalad) {
+        // Если да, показываем уведомление и возвращаем false
+        showNotification('Выберите главное блюдо/салат/стартер');
+        return false;
+    }
+
+    // Проверяем, есть ли салат или главное блюдо, но нет супа и главного блюда
+    if ((hasSalad || hasMainCourse) && !hasSoup && !hasMainCourse) {
+        // Если да, показываем уведомление и возвращаем false
+        showNotification('Выберите суп или главное блюдо');
+        return false;
+    }
+
+    // Проверяем, есть ли напиток, но нет главного блюда
+    if (hasDrink && !hasMainCourse) {
+        // Если да, показываем уведомление и возвращаем false
+        showNotification('Выберите главное блюдо');
+        return false;
+    }
+
+    // Если все проверки пройдены, возвращаем true
+    return true;
+}
+
+// Функция для отображения уведомления
+function showNotification(message) {
+    // Создаем элемент div для уведомления
+    const notification = document.createElement('div');
+    // Добавляем класс 'notification' к элементу div
+    notification.className = 'notification';
+    // Устанавливаем HTML-содержимое уведомления
+    notification.innerHTML = `
+        <p>${message}</p>
+        <button>Окей 👌</button>
+    `;
+    // Добавляем уведомление в конец body
+    document.body.appendChild(notification);
+
+    // Добавляем обработчик события для кнопки "Окей"
+    notification.querySelector('button').addEventListener('click', () => {
+        // Закрываем уведомление при нажатии на кнопку
+        closeNotification(notification);
     });
+}
 
-    function displayNotification(message) {
-        const notification = document.getElementById('notification');
+// Функция для закрытия уведомления
+function closeNotification(notification) {
+    // Удаляем уведомление из DOM
+    notification.remove();
+}
 
-        const notificationMessage = document.createElement('p');
-        notificationMessage.textContent = message
-        notification.appendChild(notificationMessage);
-
-        const notificationButton = document.createElement('button');
-        notificationButton.innerHTML = 'Окей <span>&#128076;</span>';
-        notificationButton.addEventListener('click', function () {
-            const notification = document.getElementById('notification');
-            notification.innerHTML = '';
-        })
-        notification.appendChild(notificationButton);
+// Добавляем обработчик события для формы
+document.querySelector('form').addEventListener('submit', event => {
+    // Проверяем заказ перед отправкой формы
+    if (!validateOrder()) {
+        // Если заказ не прошел проверку, предотвращаем отправку формы
+        event.preventDefault();
     }
+});
 });

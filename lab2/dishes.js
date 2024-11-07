@@ -135,6 +135,24 @@ const dishes = [
         image: 'salat2.jpg'
     },
     {
+        keyword: 'salat_indeika', 
+        name: "Салат с индейкой", 
+        kind: "veg",
+        price: 350, 
+        category: 'salat', 
+        count: '250 г',
+        image: 'salat4.jpg'
+    },
+    {
+        keyword: 'salat_krevetka', 
+        name: "Салат с креветками", 
+        kind: "veg",
+        price: 500, 
+        category: 'salat', 
+        count: '350 г',
+        image: 'salat6.jpg'
+    },
+    {
         keyword: 'salat_gov', 
         name: "Салат с говядиной", 
         kind: "meat",
@@ -200,7 +218,7 @@ const dishes = [
     {
         keyword: 'panakota', 
         name: "Панакота с орехами", 
-        kind: "large",
+        kind: "small",
         price: 350, 
         category: 'desert', 
         count: '250 г',

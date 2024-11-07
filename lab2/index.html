@@ -58,8 +58,8 @@
         <section id="drink-section">
             <h2>Выберите напиток</h2>
             <div class="filters">
-                <button data-kind="hot" class="filter-button">Холодный</button>
-                <button data-kind="cold" class="filter-button">Горячий</button>  
+                <button data-kind="cold" class="filter-button">Холодный</button>
+                <button data-kind="hot" class="filter-button">Горячий</button>  
             </div>
             <div class="dishes"></div>
         </section>
@@ -185,30 +185,30 @@
                 <div class="customer-section">
                     <h3>Ваши данные</h3>
                     <label for="name">Имя</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" >
         
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email">
         
                     <label class="checkbox-label">
-                        <input type="checkbox" name="subscribe" checked>
+                        <input type="checkbox" name="subscribe" >
                         Получать информацию о скидках и акциях
                     </label>
         
                     <label for="phone">Номер телефона</label>
-                    <input type="tel" id="phone" name="phone" required>
+                    <input type="tel" id="phone" name="phone" >
         
                     <label for="address">Адрес доставки</label>
-                    <input type="text" id="address" name="address" required>
+                    <input type="text" id="address" name="address" >
                     <p class="note">Доставка осуществляется только по Москве</p>
                     
                     <label class="time">Время доставки</label>
                     <div class="radio-group">
                         <label class="radio-label">
-                            <input type="radio" name="delivery-time" value="asap" required> Как можно скорее
+                            <input type="radio" name="delivery-time" value="asap" > Как можно скорее
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="delivery-time" value="specific" required> К указанному времени
+                            <input type="radio" name="delivery-time" value="specific" > К указанному времени
                         </label>
                     </div>
         
@@ -221,11 +221,8 @@
                         <button type="submit">Отправить</button>
                     </div>
                 </div>
-            </form>
-            
+            </form>   
         </section>
-        
-        <div id="notification" class="custom-notification"></div>
     </main>
     <footer>
         <p>Позвонить нам: <a href="tel:+70000000000">+7-000-000-00-00</a></p>
