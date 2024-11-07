@@ -482,15 +482,14 @@ footer a:hover {
 
   .custom-notification {
     position: fixed;
-    
-    bottom: 100px;
+    bottom: 80px;
     left: 50%;
     transform: translateX(-50%);
     padding: 10px 20px;
-    background-color: #f0f0f0;
-    color: #777777;
+    background-color: #ffffff;
+    color: #939393;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
     transition: opacity 0.3s ease-in-out;
     display: flex;
     justify-content: center;
