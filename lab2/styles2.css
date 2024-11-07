@@ -479,3 +479,34 @@ footer a:hover {
       grid-template-columns: repeat(3, 1fr); /* Более 1200px - три колонки */
     }
   }
+
+  .custom-notification {
+    position: fixed;
+    
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #777777;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: opacity 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.custom-notification button {
+    padding: 10px 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+}
+
+.custom-notification button:hover {
+    background-color: rgb(54, 54, 54);
+}

@@ -318,4 +318,67 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         updateOrder();
     });
+/////////////
+    const combos = [
+        { name: 'Ланч 1', items: ['soup', 'main', 'salat', 'drink'] },
+        { name: 'Ланч 2', items: ['soup', 'main', 'drink'] },
+        { name: 'Ланч 3', items: ['soup', 'salat', 'drink'] },
+        { name: 'Ланч 4', items: ['main', 'salat', 'drink'] },
+        { name: 'Ланч 5', items: ['main', 'drink'] },
+    ];
+
+    function validateOrder(selectedItems) {
+        let dishes = Object.keys(selectedItems).filter(key => key !== 'десерт' && selectedItems[key] !== null);
+        let text = '';
+
+        if (dishes.length === 0 && selectedItems['десерт'] === null) {
+            text = 'Ничего не выбрано. Выберите блюда для заказа'
+        } else if (!(dishes.includes('drink')) && dishes.length > 0) {
+            text = 'Выберите напиток';
+        } else if ((dishes.includes('drink') || !(selectedItems['десерт'] === null))) {
+            text = 'Выберите главное блюдо';
+        }
+
+        if (dishes.includes('soup') && !dishes.includes('main') && !dishes.includes('salat')) {
+            text = 'Выберите главное блюдо или салат';
+        } else if (dishes.includes('salat') && (!dishes.includes('main') || !dishes.includes('soup'))) {
+            text = 'Выберите суп или главное блюдо';
+        }
+
+        let result;
+        combos.forEach( function (combo) {
+            if (JSON.stringify(dishes) === JSON.stringify(combo.items)) {
+                result = {valid: true, message: 'Все блюда успешно выбраны'};
+            }
+        });
+        if (result) {
+            return result;
+        }
+        return {valid: false, message: text};
+    }
+
+    document.querySelector('form').addEventListener('submit', function (event) {
+        const result = validateOrder(selectedDishes);
+        if (!result.valid) {
+            console.log(result);
+            event.preventDefault();
+            displayNotification(result.message);
+        }
+    });
+
+    function displayNotification(message) {
+        const notification = document.getElementById('notification');
+
+        const notificationMessage = document.createElement('p');
+        notificationMessage.textContent = message
+        notification.appendChild(notificationMessage);
+
+        const notificationButton = document.createElement('button');
+        notificationButton.innerHTML = 'Окей <span>&#128076;</span>';
+        notificationButton.addEventListener('click', function () {
+            const notification = document.getElementById('notification');
+            notification.innerHTML = '';
+        })
+        notification.appendChild(notificationButton);
+    }
 });
