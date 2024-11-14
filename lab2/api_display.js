@@ -7,30 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let dishes = [];
 
-    // Функция для отображения блюд
-    const renderDishes = (section, category) => {
-        section.innerHTML = ''; // Очистка секции перед добавлением новых элементов
-        dishes.filter(dish => dish.category === category).forEach(dish => {
-            const dishElement = document.createElement("div");
-            dishElement.classList.add("dish");
-            dishElement.setAttribute("data-dish", dish.keyword);
-            dishElement.setAttribute("data-kind", dish.kind); // Устанавливаем атрибут для фильтрации
-            dishElement.innerHTML = `
-                <img src="${dish.image}" alt="${dish.name}">
-                <div class="dish-info">
-                    <p class="price">${dish.price}₽</p>
-                    <p class="name">${dish.name}</p>
-                    <p class="weight">${dish.count}</p>
-                    <button class="add">Добавить</button>
-                </div>
-            `;
-            section.appendChild(dishElement);
-        });
-    };
-
     // Функция для загрузки блюд из API
     const loadDishes = () => {
-        const apiUrl = 'http://lab7-api.std-900.ist.mospolytech.ru/api/dishes';
+        const apiUrl = 'https://edu.std-900.ist.mospolytech.ru/labs/api/dishes';
 
         fetch(apiUrl)
             .then(response => {
@@ -56,6 +35,27 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     loadDishes(); // Загрузка блюд
+
+    // Функция для отображения блюд
+    const renderDishes = (section, category) => {
+        section.innerHTML = ''; // Очистка секции перед добавлением новых элементов
+        dishes.filter(dish => dish.category === category).forEach(dish => {
+            const dishElement = document.createElement("div");
+            dishElement.classList.add("dish");
+            dishElement.setAttribute("data-dish", dish.keyword);
+            dishElement.setAttribute("data-kind", dish.kind); // Устанавливаем атрибут для фильтрации
+            dishElement.innerHTML = `
+                <img src="${dish.image}" alt="${dish.name}">
+                <div class="dish-info">
+                    <p class="price">${dish.price}₽</p>
+                    <p class="name">${dish.name}</p>
+                    <p class="weight">${dish.count}</p>
+                    <button class="add">Добавить</button>
+                </div>
+            `;
+            section.appendChild(dishElement);
+        });
+    };
 
     // Функция фильтрации блюд
     const filterDishes = (section, kind) => {
@@ -152,12 +152,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Найти в массиве и добавить в заказ
     document.querySelectorAll(".dish").forEach(dishElement => {
         dishElement.addEventListener("click", (event) => {
-            const dishKeyword = dishElement.getAttribute("data-dish"); 
+            const keyword = dishElement.getAttribute("data-dish"); 
             // Метод find ищет первый элемент массива,
             //  удовлетворяющий условию, переданному в виде функции.
             //   Здесь условие заключается в том, что keyword блюда
             //    совпадает с dishKeyword.
-            const dish = dishes.find(d => d.keyword === dishKeyword);
+            const dish = dishes.find(d => d.keyword === keyword);
             if (dish) {
                 selectedDishes[dish.category] = dish;
                 updateOrder();
