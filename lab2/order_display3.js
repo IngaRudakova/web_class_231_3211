@@ -84,7 +84,7 @@ function updateOrderSummary() {
     // Проверяем, есть ли выбранные блюда
     if (!Object.values(selectedDishes).some(dish => dish)) {
         // Если блюда не выбраны, отображаем сообщение и скрываем блок общей стоимости
-        orderSummary.innerHTML = '<p>Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на страницу <a href="index_lab8.html">Собрать ланч</a>.</p>';
+        orderSummary.innerHTML = '<p>Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на страницу <a href="index.html">Собрать ланч</a>.</p>';
         totalCostBlock.style.display = 'none';
         return;
     }
@@ -256,7 +256,7 @@ function removeDishFromOrder(dishId) {
             const result = await response.json();
             showNotification('Заказ успешно оформлен!');
             localStorage.removeItem('selectedDishes');
-            window.location.href = 'index_lab8.html';
+            window.location.href = 'index.html';
         } catch (error) {
             console.error('Ошибка:', error);
             showNotification('Ошибка при отправке заказа');
