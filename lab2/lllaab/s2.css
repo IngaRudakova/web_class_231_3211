@@ -231,9 +231,8 @@ footer a:hover {
     padding: 20px;
     background-color: white;
     margin: 20px auto;
-    max-width: 900px;
+    max-width: 800px;
     text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #order-form .order-item {
@@ -242,7 +241,6 @@ footer a:hover {
 
 #order-form h2 {
     margin-top: 0;
-    grid-column: span 2;
 }
 
 #order-form form {
@@ -353,10 +351,7 @@ footer a:hover {
     margin-bottom: 10px;
 }
 
-#total-price-block h5 {
-    text-align: left;
-    font-size: 20px; 
-}
+
 #total-price {
     font-weight: bold;
     margin-top: 20px;
@@ -371,27 +366,17 @@ footer a:hover {
 }
 
 .order-item p {
-    font-size: 17px; 
-    margin: 6; 
+    margin: 0; 
     line-height: 1.2; 
 }
-#order-form form div:not(.radio-group) {
-    width:auto 
-}
+
 .order-item p + p {
-    margin-bottom: 10px; 
+    margin-bottom: 20px; 
     width: 300px;
 }
 
 
-.block {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1; /* Растягиваем блоки на всю доступную ширину */
-    flex-basis: 0; /* Начальная ширина */
-    flex-shrink: 1; /* Позволяем блокам уменьшаться при необходимости */
-}
+
 
 #no-selection-message {
     display: none; 
@@ -405,7 +390,6 @@ footer a:hover {
 
 #soup-order, #main-order, #drink-order, #total-price-block {
     display: none; 
-    
 }
 
 
@@ -523,61 +507,4 @@ footer a:hover {
 .notification button:hover {
     background-color: rgb(111, 111, 111);
     color: white;
-}
-.order-panel {
-    position: sticky; /* Панель будет "прилипать" к нижней части экрана при прокрутке */
-    bottom: 0; /* Панель будет прилипать к нижней части экрана */
-    background: rgba(255, 255, 255, 0.679); /* Фон панели с полупрозрачностью */
-    padding: 15px; /* Внутренние отступы панели */
-    border-top: 1px solid #ccc; /* Верхняя граница панели */
-    display: flex; /* Использование flexbox для расположения элементов */
-    justify-content: space-between; /* Распределение элементов по краям панели */
-    align-items: center; /* Выравнивание элементов по вертикали */
-    width: 100%; /* Панель занимает всю ширину контейнера */
-}
-
-.left-side {
-    display: flex; /* Использование flexbox для расположения элементов */
-    flex-direction: row; /* Элементы располагаются в ряд */
-    gap: 20px; /* Отступ между элементами внутри левой части */
-    flex-grow: 1; /* Разрешить левой части расти и занимать доступное пространство */
-    align-items: center; /* Выровнять элементы по вертикали */
-}
-
-.order-panel h2 {
-    margin: 0; /* Убирает внешние отступы заголовка */
-    font-size: 1.8em; /* Размер шрифта заголовка */
-}
-
-#total-price-block {
-    display: flex; /* Использование flexbox для расположения элементов */
-    align-items: center; /* Выравнивание элементов по вертикали */
-}
-
-#total-price-block h4 {
-    margin: 0; /* Убирает внешние отступы заголовка */
-    margin-right: 10px; /* Отступ справа для текста */
-}
-
-#total-price-block p {
-    margin: 0; /* Убирает внешние отступы абзаца */
-    display: flex; /* Использование flexbox для расположения элементов */
-    align-items: center; /* Выравнивание элементов по вертикали */
-    font-size: 1.8em;
-}
-
-#checkout-link {
-    display: none; /* Ссылка скрыта по умолчанию */
-    padding: 10px 20px; /* Внутренние отступы ссылки */
-    background-color: #fb4e4e6c; /* Фон ссылки */
-    color: white; /* Цвет текста ссылки */
-    text-decoration: none; /* Убирает подчеркивание текста ссылки */
-    font-size: 1.2em; /* Размер шрифта ссылки */
-    margin-left: auto; /* Ссылка выравнивается по правому краю */
-    pointer-events: none; 
-
-}
-
-#checkout-link:hover {
-    background-color: #ff000071; /* Изменение фона ссылки при наведении */
 }

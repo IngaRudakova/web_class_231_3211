@@ -1,14 +1,14 @@
 /* Общие стили */
 body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #fff; /* Используем именованный цвет */
-    overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  overflow-x: hidden;
   }
   
   header {
-    background-color: #fff;
+    background-color: white;
     color: #333;
     padding: 10px 20px;
     text-align: left;
@@ -44,7 +44,8 @@ body {
   }
   
   main {
-    padding: 20px; /* Унифицированный отступ */
+    padding: 10px 20px; 
+    margin-top: 0; 
   }
   
   h2 {
@@ -61,20 +62,20 @@ body {
   }
   
   .filter-button {
-    background-color: transparent;
-    color: black;
-    padding: 10px 30px;
+    background-color: transparent; 
+    color: black; 
+    padding: 10px 30px; 
     border-radius: 10px;
-    margin-right: 10px;
+    margin-right: 10px; 
     cursor: pointer;
-    border: none;
+    border: none; 
     font-size: 18px;
     transition: background-color 0.3s, color 0.3s;
   }
   
   .filter-button:hover {
-    background-color: rgba(0, 61, 15, 0.6);
-    color: white;
+    background-color: rgba(0, 113, 28, 0.393); 
+    color: white; 
   }
   
   .filter-button.active {
@@ -86,14 +87,14 @@ body {
   /* Блюда */
   .dishes {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Адаптивная сетка */
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
   }
   
   .dish {
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background-color: white;
     padding: 30px 40px;
     border-radius: 35px;
     filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13));
@@ -109,7 +110,6 @@ body {
   .dish img {
     width: 100%;
     border-radius: 35px;
-    margin-bottom: 10px; /* Добавили отступ снизу */
   }
   
   .dish-info {
@@ -135,16 +135,15 @@ body {
   }
   
   .dish button {
-    background-color: transparent;
-    color: black;
-    padding: 10px 30px;
+    background-color: transparent; 
+    color: black; 
+    padding: 10px 30px; 
     border-radius: 10px;
     margin-top: 10px;
     cursor: pointer;
-    border: none;
+    border: none; 
     width: 100%;
     font-size: 18px;
-    transition: background-color 0.3s, color 0.3s;
   }
   
   .dish:hover button {
@@ -159,6 +158,8 @@ body {
     color: white;
     text-align: left;
     padding: 30px;
+    width: 100%;
+    position: relative; 
   }
   
   footer a {
@@ -169,11 +170,63 @@ body {
   footer a:hover {
     color: tomato;
   }
-  
+  @media (max-width: 800px) {
+    .dishes {
+        grid-template-columns: repeat(3, 1fr); /* Количество колонок: 3 */
+    }
+
+    .dishes h2 {
+        text-align: center; /* Выравнивание заголовка по центру */
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        text-align: center; /* Выравнивание заголовка по центру */
+        font-size: calc(24px + 4px); /* Увеличение шрифта на 4px */
+    }
+
+    nav {
+        flex-direction: column; /* Вертикальное направление элементов */
+        align-items: center; /* Выравнивание по центру */
+    }
+
+    nav a {
+        font-size: calc(16px + 4px); /* Увеличение шрифта на 4px */
+    }
+
+    .dishes {
+        grid-template-columns: repeat(2, 1fr); /* Количество колонок: 2 */
+        padding: 20px 30px; /* Увеличение отступов */
+    }
+
+    .about img {
+        width: 100%; /* Ширина изображения: 100% */
+    }
+
+    .dish .price,
+    .dish .name,
+    .dish .weight {
+        font-size: calc(20px - 2px); /* Уменьшение шрифта на 2px */
+    }
+}
+
+@media (max-width: 400px) {
+    table {
+        width: 100%; /* Ширина таблицы 100% */
+    }
+
+    .dish .price,
+    .dish .name,
+    .dish .weight {
+        font-size: calc(20px - 4px); /* Уменьшение шрифта еще на 2px */
+    }
+}
+
   /* Форма заказа -  добавлено */
   #order-form {
     padding: 20px;
-    background-color: #fff;
+    background-color: white;
     margin: 20px auto;
     max-width: 800px;
     text-align: center;
@@ -195,7 +248,7 @@ body {
   }
   
   #order-form form div {
-    width: 48%; /* Почти 50%, чтобы избежать переполнения */
+    width: 45%; /* Почти 50%, чтобы избежать переполнения */
     box-sizing: border-box; /* Чтобы padding/border не влияли на ширину */
   }
   
@@ -206,7 +259,7 @@ body {
   
   #order-form label {
     display: block;
-    margin-bottom: 5px; /* Отступ между label и input */
+    text-align: left;
   }
   
   #order-form select,
@@ -225,15 +278,24 @@ body {
     min-height: 100px;
     resize: vertical; /* Разрешаем только вертикальное изменение размера */
   }
-  
+  @media (max-width: 800px) {
+    #order-form form div:not(.radio-group):not(.order-item) {
+        width: 45%;
+    }
+
+    #order-form textarea {
+        width: 100%;
+        max-width: 100%;
+    }
+}
   #order-form button[type="submit"] { /* Стиль кнопки отправки */
-    background-color: tomato;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    padding: 10px 40px;
     cursor: pointer;
-    font-size: 18px;
+    border-radius: 0;
+    margin-top: 10px;
   }
   
   #order-form button[type="submit"]:hover {
