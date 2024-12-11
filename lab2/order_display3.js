@@ -4,16 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalCostBlock = document.getElementById('total-price-block');
     const totalCostValue = document.getElementById('total-price');
     const orderForm = document.getElementById('orderForm');
-    console.log(orderForm)
     const resetButtonContainerAFK = document.querySelector('reset_button .reset');
     const resetButtonContainer = document.getElementById('reset_button');
     const resetButton = document.querySelector('#reset_button button[type="reset"]');
 
-
-    console.log('666 b 222', resetButton)
-    console.log('11',resetButtonContainerAFK)
-    console.log('22', resetButtonContainer)
-    const apiKey = '65f931a2-29e2-4ca0-b490-5a19bb332145'
+    const apiKey = '65f931a2-29e2-4ca0-b490-5a19bb332145';
 
     let dishes = [];
     let selectedDishes = {
@@ -24,13 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
         dessert: null
     };
 
-    // Функция для загрузки блюд с API
-    //делает функцию асинхронной
-    // 
     async function loadDishes() {
-       
         try {
-            // await: Ожидает завершения запроса. Пока запрос не выполнится, выполнение функции приостанавливается.
             const response = await fetch(`https://edu.std-900.ist.mospolytech.ru/labs/api/dishes?api_key=${apiKey}`);
             if (!response.ok) {
                 throw new Error('Ошибка при загрузке блюд');
@@ -41,145 +31,96 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Ошибка:', error);
             showNotification('Ошибка при загрузке блюд');
         }
-
-        
-        console.log('2', selectedDishes)
     }
 
-    // Функция для загрузки выбранных блюд из localStorage
-function loadSelectedDishesFromLocalStorage() {
-    // Получаем сохраненные идентификаторы блюд из localStorage и парсим их из JSON
-    const savedDishIds = JSON.parse(localStorage.getItem('selectedDishes'));
-    // Если есть сохраненные идентификаторы блюд
-    if (savedDishIds) {
-        // Перебираем каждый сохраненный идентификатор блюда
-        savedDishIds.forEach(dishId => {
-            // Находим блюдо по идентификатору в массиве dishes
-            const dish = dishes.find(d => d.id === dishId);
-            // Если блюдо найдено
+    function loadSelectedDishesFromLocalStorage() {
+        const savedDishIds = JSON.parse(localStorage.getItem('selectedDishes'));
+        if (savedDishIds) {
+            savedDishIds.forEach(dishId => {
+                const dish = dishes.find(d => d.id === dishId);
+                if (dish) {
+                    const category = dish.category === 'main-course' ? 'mainCourse' : dish.category;
+                    selectedDishes[category] = dish;
+                }
+            });
+            updateOrderSummary();
+            updateOrderDetails();
+        }
+    }
+
+    function updateOrderSummary() {
+        orderSummary.innerHTML = '';
+        let totalCost = 0;
+
+        if (!Object.values(selectedDishes).some(dish => dish)) {
+            orderSummary.innerHTML = '<p>Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на страницу <a href="index.html">Собрать ланч</a>.</p>';
+            totalCostBlock.style.display = 'none';
+            return;
+        }
+
+        Object.entries(selectedDishes).forEach(([category, dish]) => {
+            const categoryName = {
+                soup: 'Суп',
+                mainCourse: 'Главное блюдо',
+                salad: 'Салат',
+                drink: 'Напиток',
+                dessert: 'Десерт'
+            }[category];
+
             if (dish) {
-                // Определяем категорию блюда
-                const category = dish.category === 'main-course' ? 'mainCourse' : dish.category;
-                // Добавляем блюдо в объект selectedDishes по соответствующей категории
-                selectedDishes[category] = dish;
+                const div = createDishElement(dish, true);
+                orderSummary.appendChild(div);
+                totalCost += parseInt(dish.price);
             }
         });
-        // Обновляем сводку заказа
-        updateOrderSummary();
-        // Обновляем детали заказа
-        updateOrderDetails();
 
-        // Выводим в консоль объект selectedDishes для отладки
-        console.log('1', selectedDishes);
-    }
-}
-
-// Функция для обновления сводки заказа
-function updateOrderSummary() {
-    // Очищаем содержимое блока сводки заказа
-    orderSummary.innerHTML = '';
-    // Инициализируем общую стоимость заказа
-    let totalCost = 0;
-
-    // Проверяем, есть ли выбранные блюда
-    if (!Object.values(selectedDishes).some(dish => dish)) {
-        // Если блюда не выбраны, отображаем сообщение и скрываем блок общей стоимости
-        orderSummary.innerHTML = '<p>Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на страницу <a href="index.html">Собрать ланч</a>.</p>';
-        totalCostBlock.style.display = 'none';
-        return;
+        totalCostValue.textContent = `${totalCost}₽`;
+        totalCostBlock.style.display = 'block';
     }
 
-    // Перебираем выбранные блюда
-    Object.entries(selectedDishes).forEach(([category, dish]) => {
-        // Определяем название категории блюда
-        const categoryName = {
-            soup: 'Суп',
-            mainCourse: 'Главное блюдо',
-            salad: 'Салат',
-            drink: 'Напиток',
-            dessert: 'Десерт'
-        }[category];
+    function updateOrderDetails() {
+        orderDetails.innerHTML = '';
 
-        // Если блюдо выбрано
-        if (dish) {
-            // Создаем элемент для отображения блюда
-            const div = createDishElement(dish, true);
-            // Добавляем элемент в блок сводки заказа
-            orderSummary.appendChild(div);
-            // Добавляем стоимость блюда к общей стоимости
-            totalCost += parseInt(dish.price);
+        const hasSelectedDishes = Object.values(selectedDishes).some(dish => dish);
+
+        if (!hasSelectedDishes) {
+            const div = document.createElement('div');
+            div.classList.add('order-item');
+            div.innerHTML = '<p>Не выбрано</p>';
+            orderDetails.appendChild(div);
+            return;
         }
-    });
 
-    // Обновляем отображение общей стоимости
-    totalCostValue.textContent = `${totalCost}₽`;
-    // Отображаем блок общей стоимости
-    totalCostBlock.style.display = 'block';
-}
+        Object.entries(selectedDishes).forEach(([category, dish]) => {
+            const categoryName = {
+                soup: 'Суп',
+                mainCourse: 'Главное блюдо',
+                salad: 'Салат',
+                drink: 'Напиток',
+                dessert: 'Десерт'
+            }[category];
 
-// Функция для обновления деталей заказа
-function updateOrderDetails() {
-    // Очищаем содержимое блока деталей заказа
-    orderDetails.innerHTML = '';
-
-    // Проверяем, есть ли выбранные блюда
-    const hasSelectedDishes = Object.values(selectedDishes).some(dish => dish);
-
-    // Если блюда не выбраны, отображаем сообщение
-    if (!hasSelectedDishes) {
-        const div = document.createElement('div');
-        div.classList.add('order-item');
-        div.innerHTML = '<p>Не выбрано</p>';
-        orderDetails.appendChild(div);
-        return;
+            const div = document.createElement('div');
+            div.classList.add('order-item');
+            div.innerHTML = `<h4>${categoryName}</h4><p>${dish ? `${dish.name} ${dish.price}₽` : 'Не выбрано'}</p>`;
+            orderDetails.appendChild(div);
+        });
     }
 
-    // Перебираем выбранные блюда
-    Object.entries(selectedDishes).forEach(([category, dish]) => {
-        // Определяем название категории блюда
-        const categoryName = {
-            soup: 'Суп',
-            mainCourse: 'Главное блюдо',
-            salad: 'Салат',
-            drink: 'Напиток',
-            dessert: 'Десерт'
-        }[category];
+    function removeDishFromOrder(dishId) {
+        const dish = dishes.find(dish => dish.id === Number(dishId));
 
-        // Создаем элемент для отображения блюда
-        const div = document.createElement('div');
-        div.classList.add('order-item');
-        div.innerHTML = `<h4>${categoryName}</h4><p>${dish ? `${dish.name} ${dish.price}₽` : 'Не выбрано'}</p>`;
-        // Добавляем элемент в блок деталей заказа
-        orderDetails.appendChild(div);
-    });
-}
-
-// Функция для удаления блюда из заказа
-function removeDishFromOrder(dishId) {
-    // Находим блюдо по идентификатору в массиве dishes
-    const dish = dishes.find(dish => dish.id === Number(dishId));
-
-    // Если блюдо найдено
-    if (dish) {
-        // Определяем категорию блюда
-        const category = dish.category === 'main-course' ? 'mainCourse' : dish.category;
-        // Удаляем блюдо из объекта selectedDishes
-        selectedDishes[category] = null;
-        // Обновляем сводку заказа
-        updateOrderSummary();
-        // Обновляем детали заказа
-        updateOrderDetails();
-        // Сохраняем выбранные блюда в localStorage
-        saveSelectedDishesToLocalStorage();
+        if (dish) {
+            const category = dish.category === 'main-course' ? 'mainCourse' : dish.category;
+            selectedDishes[category] = null;
+            updateOrderSummary();
+            updateOrderDetails();
+            saveSelectedDishesToLocalStorage();
+        }
     }
-}
 
-
-    // Обработчик события для кнопки "Сбросить"
     resetButton.addEventListener('click', (event) => {
-        // Сбрасываем форму
         orderForm.reset();
-        // Очищаем выбранные блюда
         selectedDishes = {
             soup: null,
             mainCourse: null,
@@ -187,20 +128,16 @@ function removeDishFromOrder(dishId) {
             drink: null,
             dessert: null
         };
-        // Обновляем сводку и детали заказа
         updateOrderSummary();
         updateOrderDetails();
-        // Очищаем localStorage
         localStorage.removeItem('selectedDishes');
     });
 
-    // Функция для сохранения выбранных блюд в localStorage
     function saveSelectedDishesToLocalStorage() {
         const selectedDishIds = Object.values(selectedDishes).filter(dish => dish).map(dish => dish.id);
         localStorage.setItem('selectedDishes', JSON.stringify(selectedDishIds));
     }
 
-    // Обработчик события для кнопки "Удалить"
     orderSummary.addEventListener('click', event => {
         if (event.target.classList.contains('btn')) {
             const dishId = event.target.getAttribute('data-dish');
@@ -208,7 +145,6 @@ function removeDishFromOrder(dishId) {
         }
     });
 
-    // Функция для отображения уведомления
     function showNotification(message) {
         const notification = document.createElement('div');
         notification.className = 'notification';
@@ -223,19 +159,15 @@ function removeDishFromOrder(dishId) {
         });
     }
 
-    // Функция для закрытия уведомления
     function closeNotification(notification) {
         notification.remove();
     }
 
-    // Добавляем обработчик события для формы
     orderForm.addEventListener('submit', async event => {
-        console.log('777', selectedDishes)
         event.preventDefault();
         if (!validateOrder()) {
-            console.log('3', dishes)
-            console.log('3', selectedDishes)
             event.preventDefault();
+            return;
         }
 
         const formData = new FormData(orderForm);
@@ -244,6 +176,32 @@ function removeDishFromOrder(dishId) {
         formData.append('salad_id', selectedDishes.salad ? selectedDishes.salad.id : '');
         formData.append('drink_id', selectedDishes.drink ? selectedDishes.drink.id : '');
         formData.append('dessert_id', selectedDishes.dessert ? selectedDishes.dessert.id : '');
+
+        // Добавление цены блюд в форму
+        formData.append('soup_price', selectedDishes.soup ? selectedDishes.soup.price : '');
+        formData.append('main_course_price', selectedDishes.mainCourse ? selectedDishes.mainCourse.price : '');
+        formData.append('salad_price', selectedDishes.salad ? selectedDishes.salad.price : '');
+        formData.append('drink_price', selectedDishes.drink ? selectedDishes.drink.price : '');
+        formData.append('dessert_price', selectedDishes.dessert ? selectedDishes.dessert.price : '');
+
+        // Добавление комментария в форму
+        const comment = formData.get('comment');
+        if (comment) {
+            formData.append('comment', comment.trim());
+        } else {
+            formData.append('comment', '');
+        }
+
+        // Проверка и сохранение времени доставки
+        const deliveryType = formData.get('delivery_type');
+        if (deliveryType === 'by_time') {
+            const deliveryTime = formData.get('delivery-time');
+            if (!deliveryTime) {
+                showNotification('Укажите время доставки');
+                return;
+            }
+            formData.append('delivery_time', deliveryTime);
+        }
 
         try {
             const response = await fetch(`https://edu.std-900.ist.mospolytech.ru/labs/api/orders?api_key=${apiKey}`, {
@@ -254,6 +212,7 @@ function removeDishFromOrder(dishId) {
                 throw new Error('Ошибка при отправке заказа');
             }
             const result = await response.json();
+            console.log('Заказ успешно оформлен:', result);
             showNotification('Заказ успешно оформлен!');
             localStorage.removeItem('selectedDishes');
             window.location.href = 'index.html';
@@ -261,15 +220,9 @@ function removeDishFromOrder(dishId) {
             console.error('Ошибка:', error);
             showNotification('Ошибка при отправке заказа');
         }
-
-
-
     });
 
-    // Функция для проверки выбранных блюд
     function validateOrder() {
-        console.log(dishes)
-        console.log(selectedDishes)
         const selectedDishesArray = Object.values(selectedDishes).filter(dish => dish !== null);
 
         if (selectedDishesArray.length === 0) {
@@ -305,7 +258,6 @@ function removeDishFromOrder(dishId) {
         return true;
     }
 
-    // Функция для создания элемента блюда
     function createDishElement(dish, isOrderPage = false) {
         const gridItem = document.createElement('div');
         gridItem.classList.add('dish');

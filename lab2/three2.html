@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="three.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body>
+    <header>
+        <h1>Food Construct</h1>
+        <nav>
+            <a href="first_list.html">О нас</a>
+            <a href="index.html">Собрать ланч</a>
+            <a href="order.html">Оформить заказ</a>
+            <a href="three2.html" class="active">Заказы</a>
+            <a href="#">Контакты</a>
+        </nav>
+    </header>
+    <div class="order-container">
+        <h2>История заказов</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Дата оформления</th>
+                    <th>Состав заказа</th>
+                    <th>Стоимость</th>
+                    <th>Время доставки</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody id="orderList">
+                <!-- Строки заказов будут динамически добавляться сюда -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Модальное окно для просмотра заказа -->
+    <div id="viewModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Подробности заказа</h2>
+            <p id="viewOrderDate"></p>
+            <h3>Доставка</h3>
+            <p id="viewOrderDelivery"></p>
+            <h3>Комментарий</h3>
+            <p id="viewOrderComment"></p>
+            <h3>Состав заказа</h3>
+            <p id="viewOrderItems"></p>
+            <h3>Стоимость</h3>
+            <p id="viewOrderCost"></p>
+            <div class="form-buttons">
+            <button id="closeViewModal" class="button-save">Ок</button>
+        </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для редактирования заказа -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Редактирование заказа</h2>
+            <form id="editOrderForm">
+                <div class="form-group">
+                    <label for="order-date">Дата оформления</label>
+                    <input type="text" id="order-date" name="order-date" readonly>
+                </div>
+                <h3>Доставка</h3>
+                <div class="form-group">
+                    <label for="full_name">Имя получателя:</label>
+                    <input type="text" id="full_name" name="full_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="delivery_address">Адрес доставки:</label>
+                    <input type="text" id="delivery_address" name="delivery_address" required>
+                </div>
+                <div class="form-group">
+                    <label for="delivery_type">Тип доставки:</label>
+                    <input type="radio" id="delivery_type_now" name="delivery_type" value="now" required>
+                    <label for="delivery_type_now">Как можно скорее</label>
+                    <input type="radio" id="delivery_type_by_time" name="delivery_type" value="by_time" required>
+                    <label for="delivery_type_by_time">Ко времени</label>
+                </div>
+                <div class="form-group">
+                    <label for="delivery_time">Время доставки:</label>
+                    <input type="time" id="delivery_time" name="delivery_time" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон:</label>
+                    <input type="text" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <h3>Комментарий</h3>
+                <div class="form-group">
+                    <textarea id="comment" name="comment"></textarea>
+                </div>
+                <h3>Состав заказа</h3>
+                <div class="form-group">
+                    <label for="soup_id">Суп:</label>
+                    <input type="text" id="soup_id" name="soup_id" required>
+                    <span id="soup_price"></span>
+                </div>
+                <div class="form-group">
+                    <label for="main_course_id">Основное блюдо:</label>
+                    <input type="text" id="main_course_id" name="main_course_id" required>
+                    <span id="main_course_price"></span>
+                </div>
+                <div class="form-group">
+                    <label for="salad_id">Салат:</label>
+                    <input type="text" id="salad_id" name="salad_id" required>
+                    <span id="salad_price"></span>
+                </div>
+                <div class="form-group">
+                    <label for="drink_id">Напиток:</label>
+                    <input type="text" id="drink_id" name="drink_id" required>
+                    <span id="drink_price"></span>
+                </div>
+                <div class="form-group">
+                    <label for="dessert_id">Десерт:</label>
+                    <input type="text" id="dessert_id" name="dessert_id" required>
+                    <span id="dessert_price"></span>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" id="saveEditOrder" class="button-save">Сохранить</button>
+                    <button type="button" id="cancelEditOrder" class="button-no">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно для удаления заказа -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Удаление заказа</h2>
+            <p>Вы уверены, что хотите удалить этот заказ?</p>
+            <div class="form-buttons">
+                <button id="confirmDeleteOrder" class="button-delete">Да</button>
+                <button id="cancelDeleteOrder" class="button-no">Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="three.js"></script>
+</body>
+</html>
