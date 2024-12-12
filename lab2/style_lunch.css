@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+
+}
+
+header, main, footer {
+  padding: 20px;
+  
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: left;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+nav a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+nav a:hover, nav a.active {
+  color: tomato;
+}
+
+.dishes {     
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.dish {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 35px;
+  filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13));
+  cursor: pointer;
+  text-align: left;
+}
+
+.dish:hover {
+  border: 2px solid tomato;
+}
+
+.dish img {
+  width: 100%;
+  border-radius: 35px;
+}
+
+.dish-info {
+  margin-bottom: 10px;
+}
+
+.dish .price {
+  font-size: 20px;
+  color: black;
+  margin-bottom: 5px; 
+}
+
+.dish .name {
+  font-size: 18px;
+  color: black;
+  margin-top: 0; 
+}
+
+.dish .weight {
+  color: gray;
+  font-size: 14px;
+  margin-top: 15px; 
+}
+
+.dish button {
+  background-color: transparent; 
+  color: black; 
+  padding: 10px 30px; 
+  border-radius: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  border: none; 
+  width: 100%;
+  font-size: 18px;
+}
+
+.dish:hover button {
+  background-color: tomato; 
+  color: white; 
+}
+
+
+.active {
+  color: tomato; /* Цвет текста для активной кнопки */
+}
+/* Стили для ширины экрана ≤800px */
+@media (max-width: 800px) {
+    .dish-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* Стили для ширины экрана ≤600px */
+  @media (max-width: 600px) {
+    .dish-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .dish-item {
+      padding: 20px 30px;
+    }
+  }
+
+  /* Стили для ширины экрана ≤400px */
+@media (max-width: 400px) {
+    table {
+      width: 100%;
+    }
+  }
+  

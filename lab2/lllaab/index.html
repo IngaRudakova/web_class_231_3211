@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бизнес-ланчи в Москве</title>
+    <link rel="stylesheet" href="s2.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+</head>
+<body>
+    <header>
+        <h1><a href="#">Food Construct</a></h1>
+        <nav class="menu">
+            <a href="#">О нас</a>
+            <a href="index.html" class="active">Собрать ланч</a>
+            <a href="o.html">Оформить заказ</a>
+            <a href="#">Заказы</a>
+            <a href="#">Контакты</a>
+        </nav>
+    </header>
+    <main>
+        <section class="lunch-options">
+            <h2>Доступные для заказа варианты ланча</h2>
+            <div class="grid-container-lunch">
+                 <!-- Вариант 1: Суп, Главное блюдо, Салат, Напиток -->
+                <div class="lunch-option">
+                    <div class="dish-container">
+                        <div class="dish">
+                            <img src="soup.jpg" alt="Суп">
+                            <p>Суп</p>
+                        </div>
+                        <div class="dish">
+                            <img src="main-course.jpg" alt="Главное блюдо">
+                            <p>Главное блюдо</p>
+                        </div>
+                        <div class="dish">
+                            <img src="salad.jpg" alt="Салат">
+                            <p>Салат</p>
+                        </div>
+                        <div class="dish">
+                            <img src="drink.jpg" alt="Напиток">
+                            <p>Напиток</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Вариант 2: Суп, Главное блюдо, Напиток -->
+                <div class="lunch-option">
+                    <div class="dish-container">
+                        <div class="dish">
+                            <img src="soup.jpg" alt="Суп">
+                            <p>Суп</p>
+                        </div>
+                        <div class="dish">
+                            <img src="main-course.jpg" alt="Главное блюдо">
+                            <p>Главное блюдо</p>
+                        </div>
+                        <div class="dish">
+                            <img src="drink.jpg" alt="Напиток">
+                            <p>Напиток</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Вариант 3: Суп, Салат, Напиток -->
+                <div class="lunch-option">
+                    <div class="dish-container">
+                        <div class="dish">
+                            <img src="soup.jpg" alt="Суп">
+                            <p>Суп</p>
+                        </div>
+                        <div class="dish">
+                            <img src="salad.jpg" alt="Салат">
+                            <p>Салат</p>
+                        </div>
+                        <div class="dish">
+                            <img src="drink.jpg" alt="Напиток">
+                            <p>Напиток</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Вариант 4: Главное блюдо, Салат, Напиток -->
+                <div class="lunch-option">
+                    <div class="dish-container">
+                        <div class="dish">
+                            <img src="main-course.jpg" alt="Главное блюдо">
+                            <p>Главное блюдо</p>
+                        </div>
+                        <div class="dish">
+                            <img src="salad.jpg" alt="Салат">
+                            <p>Салат</p>
+                        </div>
+                        <div class="dish">
+                            <img src="drink.jpg" alt="Напиток">
+                            <p>Напиток</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Вариант 5: Главное блюдо, Напиток -->
+                <div class="lunch-option">
+                    <div class="dish-container">
+                        <div class="dish">
+                            <img src="main-course.jpg" alt="Главное блюдо">
+                            <p>Главное блюдо</p>
+                        </div>
+                        <div class="dish">
+                            <img src="drink.jpg" alt="Напиток">
+                            <p>Напиток</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Вариант 6: Десерт -->
+                <div class="lunch-option">
+                    <div class="dish-container">
+                        <div class="dish">
+                            <img src="dessert.jpg" alt="Десерт">
+                            <p>Десерт</p>
+                            <p>(Можно добавить к любому заказу)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="container">
+            <section class="soup">
+                <h2>Выберите суп</h2>
+                <div class="filters">
+                    <button data-kind="fish">Рыбные</button>
+                    <button data-kind="veg">Вегетарианский</button>
+                    <button data-kind="meat">Мясные</button>
+                </div>
+                <div class="grid-container"></div>
+            </section>
+
+            <section class="main-course">
+                <h2>Выберите главное блюдо</h2>
+                <div class="filters">
+                    <button data-kind="fish">Рыбные</button>
+                    <button data-kind="veg">Вегетарианский</button>
+                    <button data-kind="meat">Мясные</button>
+                </div>
+                <div class="grid-container"></div>
+            </section>
+
+            <section class="salad">
+                <h2>Выберите салат или стартер</h2>
+                <div class="filters">
+                    <button data-kind="fish">Рыбные</button>
+                    <button data-kind="veg">Вегетарианский</button>
+                    <button data-kind="meat">Мясные</button>
+                </div>
+                <div class="grid-container"></div>
+            </section>
+
+            <section class="dessert">
+                <h2>Выберите десерт</h2>
+                <div class="filters">
+                    <button data-kind="small">Маленькая порция</button>
+                    <button data-kind="medium">Средняя порция</button>
+                    <button data-kind="large">Большая порция</button>
+                </div>
+                <div class="grid-container"></div>
+            </section>
+
+            <section class="drink">
+                <h2>Выберите напиток</h2>
+                <div class="filters">
+                    <button data-kind="cold">Холодный</button>
+                    <button data-kind="hot">Горячий</button>
+                </div>
+                <div class="grid-container"></div>
+            </section>
+        </div>
+
+        <section class="order-panel" style="position: sticky; bottom: 0; background: white; padding: 10px; border-top: 1px solid #ccc;">
+            <h2>Ваш заказ</h2>
+            <!-- <div id="order-summary">
+                <p>Ничего не выбрано</p>
+            </div> -->
+            <div id="total-cost" style="display: none;">
+                <h4>Стоимость заказа</h4>
+                <p id="total-cost-value"></p>
+                <a href="o.html" id="checkout-link" style="display: none;">Перейти к оформлению</a>
+            </div>
+        </section>
+    </main>
+
+
+    <footer id="contacts">
+        <p>Позвонить нам <a href="tel:+70000000000">+7 000 000-00-00</a></p>
+    </footer>
+    <script src="dis.js"></script>
+</body>
+</html>

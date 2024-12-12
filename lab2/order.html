@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles2.css">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <title>Оформить заказ</title>
+</head>
+<body>
+    <header>
+        <h1>Food Construct</h1>
+        <nav>
+            <a href="first_list.html">О нас</a>
+            <a href="index.html">Собрать ланч</a>
+            <a href="order.html" class="active">Оформить заказ</a>
+            <a href="three2.html">Заказы</a>
+            <a href="#">Контакты</a>
+        </nav>
+    </header>
+    <main>
+        <section class="order-form">
+            <h2>Состав заказа</h2>
+            <div id="order-summary" class="dishes">
+                <p>Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на страницу <a href="index.html">Собрать ланч</a>.</p>
+            </div>
+        </section>
+        <section id="order-form">
+            <h2>Оформление заказа</h2>
+            <form id="orderForm" action="https://edu.std-900.ist.mospolytech.ru/labs/api/orders" method="POST">
+                <div class="order-section" >
+                    <h3>Ваш заказ</h3>
+                    <div id="order-details" class="order-item">
+                        <p>Ничего не выбрано</p>
+                    </div>
+                    <div id="total-price-block">
+                        <h5>Стоимость заказа</h>
+                        <p id="total-price"></p>
+                    </div>
+                    <label for="comment">Комментарии:</label>
+                    <textarea id="comment" name="comment"></textarea>
+                </div>
+
+                <div class="customer-section">
+                    <h3>Ваши данные</h3>
+                    <label for="name">Имя</label>
+                    <input type="text" id="name" name="full_name" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="subscribe" name="subscribe">
+                        Получать информацию о скидках и акциях
+                    </label>
+
+                    <label for="phone">Номер телефона</label>
+                    <input type="tel" id="phone" name="phone" required>
+
+                    <label for="address">Адрес доставки</label>
+                    <input type="text" id="address" name="delivery_address" required>
+                    <p class="note">Доставка осуществляется только по Москве</p>
+
+                    <label class="time">Время доставки</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="delivery_type" value="now"> Как можно скорее
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="delivery_type" value="by_time"> К указанному времени
+                        </label>
+                    </div>
+                        <label for="delivery-time">Укажите время доставки</label>
+                        <input type="time" id="delivery-time" name="delivery-time" min="07:00" max="23:00" step="300">
+                        <p class="note">Доступное время доставки с 7:00 до 23:00</p>
+
+                        <div id="reset_button" class="button-group">
+                            <button type="reset">Сбросить</button>
+                            <button type="submit">Отправить</button>
+                        </div>
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>Позвонить нам: <a href="tel:+70000000000">+7-000-000-00-00</a></p>
+    </footer>
+    <script src="order_display3.js"></script>
+</body>
+</html>

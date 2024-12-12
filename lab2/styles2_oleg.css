@@ -1,0 +1,191 @@
+/* Сохраняем предыдущие стили */
+#order-summary.dishes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.order-item {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 10px 15px;
+    border-radius: 8px;
+    gap: 10px;
+    border: 1px solid #eee;
+}
+
+.order-item p {
+    margin: 0;
+    line-height: 1.4;
+    font-size: 15px;
+}
+
+#order-details {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#order-details > div {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 8px 15px;
+    border-radius: 8px;
+    gap: 10px;
+    border: 1px solid #eee;
+}
+
+.price-value {
+    font-weight: bold;
+    color: #333;
+}
+
+.order-item p + p::before {
+    content: "•";
+    margin: 0 8px;
+    color: #999;
+}
+
+/* Стили для формы заказа */
+#order-form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+#orderForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.order-section, .customer-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+/* Стили для полей формы */
+.customer-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.customer-section input[type="text"],
+.customer-section input[type="email"],
+.customer-section input[type="tel"],
+.customer-section input[type="time"],
+.customer-section textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.customer-section input:focus,
+.customer-section textarea:focus {
+    border-color: tomato;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 99, 71, 0.2);
+}
+
+/* Стили для чекбоксов и радиокнопок */
+.checkbox-label,
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.checkbox-label input,
+.radio-label input {
+    margin: 0;
+}
+
+/* Стили для примечаний */
+.note {
+    font-size: 12px;
+    color: #666;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+/* Стили для кнопок */
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.button-group button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.button-group button[type="reset"] {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.button-group button[type="submit"] {
+    background-color: tomato;
+    color: white;
+}
+
+.button-group button:hover {
+    transform: translateY(-2px);
+}
+
+.button-group button[type="reset"]:hover {
+    background-color: #e4e4e4;
+}
+
+.button-group button[type="submit"]:hover {
+    background-color: #ff5233;
+}
+
+/* Адаптивная верстка */
+@media (max-width: 768px) {
+    #orderForm {
+        grid-template-columns: 1fr;
+    }
+
+    #order-summary.dishes,
+    #order-details {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .order-item {
+        flex: 0 1 auto;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .button-group button {
+        width: 100%;
+    }
+}

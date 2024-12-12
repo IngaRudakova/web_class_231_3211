@@ -1,0 +1,101 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    overflow-x: hidden;
+  }
+  
+  .order-history {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  } */
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  thead th {
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+    padding: 10px;
+  }
+  
+  tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: top;
+  }
+  
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 10px;
+  }
+  
+  .actions button:hover {
+    color: #007BFF;
+  }
+  
+  .actions .delete:hover {
+    color: #FF0000;
+  }
+
+
+header {
+    background-color: white;
+    color: #333;
+    padding: 10px 20px;
+    text-align: left;
+}
+
+h1 {
+    margin-top: 0; 
+}
+
+nav {
+    display: flex;
+    justify-content: flex-start;
+}
+
+nav a {
+    color: #333; 
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 1.5; 
+}
+
+nav a:first-child {
+    margin-left: 0; 
+}
+
+nav a:hover {
+    color: orange; 
+}
+
+a.active {
+    color: tomato;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}

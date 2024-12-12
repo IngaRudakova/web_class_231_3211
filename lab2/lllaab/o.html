@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформить заказ</title>
+    <link rel="stylesheet" href="s2.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+</head>
+<body>
+    <header>
+        <h1><a href="#">Food Construct</a></h1>
+        <nav class="menu">
+            <a href="#">О нас</a>
+            <a href="index.html">Собрать ланч</a>
+            <a href="o.html" class="active">Оформить заказ</a>
+            <a href="#">Заказы</a>
+            <a href="#">Контакты</a>
+        </nav>
+    </header>
+    <main>
+        <section class="order-section ">
+            <h2>Состав заказа</h2>
+            <div id="order-summary" class="grid-container">
+                <p>Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на страницу <a href="index.html">Собрать ланч</a>.</p>
+            </div>
+            
+        </section>
+
+        <section id="order-form">
+            <h2>Оформление заказа</h2>
+            <form id="orderForm" action="https://edu.std-900.ist.mospolytech.ru/labs/api/orders" method="POST">
+                <div class="order-container">
+                    <div class="block ">
+                        <h3>Ваш заказ</h3>
+                        <div id="order-details">
+                            <p>Ничего не выбрано</p>
+                        </div>
+                        <div id="total-cost" style="display: none;">
+                            <h4>Стоимость заказа</h4>
+                            <p id="total-cost-value"></p>
+                        </div>
+                        <label for="comments">Комментарии:</label>
+                        <textarea id="comments" name="comments"></textarea>
+                    </div>
+
+                    <div class="block">
+                        <h3>Данные клиента</h3>
+
+                        <label for="name">Имя</label>
+                        <input type="text" id="name" name="full_name" required>
+
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="subscribe" name="subscribe">
+                            <label for="subscribe">Получать информацию о скидках и акциях</label>
+                        </div>
+
+                        <label for="phone">Номер телефона</label>
+                        <input type="tel" id="phone" name="phone" required>
+
+                        <label for="address">Адрес доставки</label>
+                        <input type="text" id="address" name="delivery_address" required>
+                        <h5><i>Доставка осуществляется только по Москве</i></h5>
+
+                        <legend class="sidebar-header">Время доставки:</legend>
+                        <div class="radio-container">
+                            <input type="radio" name="delivery_type" id="time1" value="now" required>
+                            <label for="time1">Как можно скорее</label>
+                        </div>
+                        <div class="radio-container">
+                            <input type="radio" name="delivery_type" id="time2" value="by_time" required>
+                            <label for="time2">К указанному времени</label>
+                        </div>
+
+                        <label for="delivery-time">Укажите время доставки</label>
+                        <input type="time" id="delivery-time" name="delivery_time" min="07:00" max="23:00" step="300">
+                        <h5><i>Доступное время доставки с 7:00 до 23:00</i></h5>
+
+                        <div class="button-container">
+                            <button id="reset_button" class="btn_form" type="reset">Сбросить</button>
+                            <button class="btn_form" type="submit">Отправить</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer id="contacts">
+        <p>Позвонить нам <a href="tel:+70000000000">+7 000 000-00-00</a></p>
+    </footer>
+    <script src="o.js"></script>
+</body>
+</html>

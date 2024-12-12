@@ -1,0 +1,583 @@
+
+/* Общие стили */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: white;
+    color: #333;
+    padding: 10px 20px;
+    text-align: left;
+}
+
+h1 {
+    margin-top: 0; 
+}
+
+nav {
+    display: flex;
+    justify-content: flex-start;
+}
+
+nav a {
+    color: #333; 
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 1.5; 
+}
+
+nav a:first-child {
+    margin-left: 0; 
+}
+
+nav a:hover {
+    color: orange; 
+}
+
+a.active {
+    color: tomato;
+}
+
+main {
+    padding: 10px 20px; 
+    margin-top: 0; 
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Кнопки фильтра */
+.filters {
+    margin-bottom: 10px;
+    text-align: left; 
+    display: flex; 
+    justify-content: flex-start; 
+}
+
+.filter-button {
+    background-color: transparent; 
+    color: black; 
+    padding: 10px 30px; 
+    border-radius: 10px;
+    margin-right: 10px; 
+    cursor: pointer;
+    border: none; 
+    font-size: 18px;
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+.filter-button:hover {
+    background-color: rgba(0, 61, 15, 0.6); 
+    color: white; 
+}
+
+.filter-button.active {
+    background-color: rgba(0, 113, 28, 0.393); 
+    color: white; 
+}
+
+/* Блюда */
+.dishes {     
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.dish {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 35px;
+    filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13));
+    cursor: pointer;
+    text-align: left;
+}
+
+.dish:hover {
+    border: 2px solid tomato;
+}
+.dish img {
+    width: 100%;
+    border-radius: 35px;
+}
+
+.dish-info {
+    margin-bottom: 10px;
+}
+
+.dish .price {
+    font-size: 20px;
+    color: black;
+    margin-bottom: 5px; 
+}
+
+.dish .name {
+    font-size: 18px;
+    color: black;
+    margin-top: 0; 
+}
+
+.dish .weight {
+    color: gray;
+    font-size: 14px;
+    margin-top: 15px; 
+}
+
+.dish button {
+    background-color: transparent; 
+    color: black; 
+    padding: 10px 30px; 
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none; 
+    width: 100%;
+    font-size: 18px;
+}
+
+.dish:hover button {
+    background-color: tomato; 
+    color: white; 
+}
+
+/* Подвал */
+footer {
+    background-color: black;
+    color: white;
+    text-align: left;
+    padding: 30px;
+    width: 100%;
+    position: relative; 
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: tomato;
+}
+
+/* Медиа-запросы */
+@media (max-width: 800px) {
+    .dishes {
+        grid-template-columns: repeat(3, 1fr); /* Количество колонок: 3 */
+    }
+
+    .dishes h2 {
+        text-align: center; /* Выравнивание заголовка по центру */
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        text-align: center; /* Выравнивание заголовка по центру */
+        font-size: calc(24px + 4px); /* Увеличение шрифта на 4px */
+    }
+
+    nav {
+        flex-direction: column; /* Вертикальное направление элементов */
+        align-items: center; /* Выравнивание по центру */
+    }
+
+    nav a {
+        font-size: calc(16px + 4px); /* Увеличение шрифта на 4px */
+    }
+
+    .dishes {
+        grid-template-columns: repeat(2, 1fr); /* Количество колонок: 2 */
+        padding: 20px 30px; /* Увеличение отступов */
+    }
+
+    .about img {
+        width: 100%; /* Ширина изображения: 100% */
+    }
+
+    .dish .price,
+    .dish .name,
+    .dish .weight {
+        font-size: calc(20px - 2px); /* Уменьшение шрифта на 2px */
+    }
+}
+
+@media (max-width: 400px) {
+    table {
+        width: 100%; /* Ширина таблицы 100% */
+    }
+
+    .dish .price,
+    .dish .name,
+    .dish .weight {
+        font-size: calc(20px - 4px); /* Уменьшение шрифта еще на 2px */
+    }
+}
+
+.placeholder {
+    color: gray;
+    pointer-events: none;
+}
+
+#order-form {
+    padding: 20px;
+    background-color: white;
+    margin: 20px auto;
+    max-width: 900px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#order-form .order-item {
+    text-align: left;
+}
+
+#order-form h2 {
+    margin-top: 0;
+    grid-column: span 2;
+}
+
+#order-form form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#order-form form div:not(.radio-group) {
+    width: 45%; 
+}
+
+#order-form h3 {
+    text-align: left;
+}
+
+#order-form label {
+    display: block;
+    text-align: left;
+}
+
+#order-form select,
+#order-form input:not([type="checkbox"]):not([type="radio"]),
+#order-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+
+#order-form textarea {
+    max-width: 100%; 
+    min-width: 100%; 
+    max-height: 300px;
+    min-height: 50px;
+    margin: 0 auto;
+}
+
+@media (max-width: 800px) {
+    #order-form form div:not(.radio-group):not(.order-item) {
+        width: 45%;
+    }
+
+    #order-form textarea {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+
+#order-form button {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    padding: 10px 40px;
+    cursor: pointer;
+    border-radius: 0;
+    margin-top: 10px;
+}
+
+#order-form button[type="reset"] {
+    margin-right: 10px;
+}
+
+.note {
+    font-size: 12px;
+    color: gray;
+    text-align: left;
+    margin: 0;
+    margin-bottom: 20px; 
+    font-style: italic; 
+}
+
+.checkbox-label,
+.radio-label {
+    display: flex; 
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.checkbox-label input,
+.radio-label input {
+    margin-right: 10px;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%; 
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-start; 
+    width: 100%;
+}
+
+.checkbox-label {
+    margin-bottom: 20px; 
+}
+
+
+.time {
+    margin-bottom: 10px;
+}
+
+#total-price-block h5 {
+    text-align: left;
+    font-size: 20px; 
+}
+#total-price {
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+#total-price .price-value {
+    font-size: 20px; 
+    display: inline-block;
+
+}
+
+.order-item p {
+    font-size: 17px; 
+    margin: 6; 
+    line-height: 1.2; 
+}
+#order-form form div:not(.radio-group) {
+    width:auto 
+}
+.order-item p + p {
+    margin-bottom: 10px; 
+    width: 300px;
+}
+
+
+.block {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Растягиваем блоки на всю доступную ширину */
+    flex-basis: 0; /* Начальная ширина */
+    flex-shrink: 1; /* Позволяем блокам уменьшаться при необходимости */
+}
+
+#no-selection-message {
+    display: none; 
+}
+
+
+#no-selection-message {
+    display: block; 
+    margin-bottom: 20px;
+}
+
+#soup-order, #main-order, #drink-order, #total-price-block {
+    display: none; 
+    
+}
+
+
+ 
+  * {
+    box-sizing: border-box;
+  }
+
+  .lunch-block {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.lunch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  place-items: center;
+  padding-top: 10px;
+}
+
+.lunch-item {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    
+}
+
+.dish-item {
+    display: flex;
+  flex-direction: column; /* Располагаем элементы вертикально */
+  align-items: center;    /* Центрируем элементы по горизонтали */
+  margin-right: 10px;
+  white-space: nowrap;
+      
+  }
+
+.dish-item img {
+    
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  
+  transition: transform 0.3s ease; /* Для анимации при наведении */
+}
+
+.dish-item img:hover {
+  transform: translateY(-5px) scale(1.1);
+}
+
+.dessert-info {
+  font-size: 13px; /* На 2 пункта меньше, чем основная подпись */
+}
+
+@media (max-width: 767px) {
+    .lunch-grid {
+      grid-template-columns: 1fr; /* Менее 768px - одна колонка */
+    }
+  
+    .lunch-item {
+      flex-direction: row; /* Менее 768px - элементы идут друг под другом */
+      
+      justify-content: flex-start;
+    }
+  
+    .dish-item {
+      margin-right: 10; 
+    }
+  
+    .dish-item img {
+      margin-right: 0; /* Убираем отступ у изображения */
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .lunch-grid {
+      grid-template-columns: repeat(2, 1fr); /* Между 768px и 1200px - две колонки */
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .lunch-grid {
+      grid-template-columns: repeat(3, 1fr); /* Более 1200px - три колонки */
+    }
+  }
+
+  .notification {
+    position: fixed; /* Фиксированное положение элемента на странице */
+    top: 50%; /* Верхний край элемента находится на 50% от верха окна просмотра */
+    left: 50%; /* Левый край элемента находится на 50% от левого края окна просмотра */
+    transform: translate(-50%, -50%); /* Сдвигает элемент на 50% влево и вверх, центрируя его */
+    background-color: white;
+    color: rgb(69, 69, 69);
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.notification button {
+    background-color: white;
+    color: rgb(66, 66, 66);
+    border: 1px solid black; 
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.notification button:hover {
+    background-color: rgb(111, 111, 111);
+    color: white;
+}
+.order-panel {
+    position: sticky; /* Панель будет "прилипать" к нижней части экрана при прокрутке */
+    bottom: 0; /* Панель будет прилипать к нижней части экрана */
+    background: rgba(255, 255, 255, 0.679); /* Фон панели с полупрозрачностью */
+    padding: 15px; /* Внутренние отступы панели */
+    border-top: 1px solid #ccc; /* Верхняя граница панели */
+    display: flex; /* Использование flexbox для расположения элементов */
+    justify-content: space-between; /* Распределение элементов по краям панели */
+    align-items: center; /* Выравнивание элементов по вертикали */
+    width: 100%; /* Панель занимает всю ширину контейнера */
+}
+
+.left-side {
+    display: flex; /* Использование flexbox для расположения элементов */
+    flex-direction: row; /* Элементы располагаются в ряд */
+    gap: 20px; /* Отступ между элементами внутри левой части */
+    flex-grow: 1; /* Разрешить левой части расти и занимать доступное пространство */
+    align-items: center; /* Выровнять элементы по вертикали */
+}
+
+.order-panel h2 {
+    margin: 0; /* Убирает внешние отступы заголовка */
+    font-size: 1.8em; /* Размер шрифта заголовка */
+}
+
+#total-price-block {
+    display: flex; /* Использование flexbox для расположения элементов */
+    align-items: center; /* Выравнивание элементов по вертикали */
+}
+
+#total-price-block h4 {
+    margin: 0; /* Убирает внешние отступы заголовка */
+    margin-right: 10px; /* Отступ справа для текста */
+}
+
+#total-price-block p {
+    margin: 0; /* Убирает внешние отступы абзаца */
+    display: flex; /* Использование flexbox для расположения элементов */
+    align-items: center; /* Выравнивание элементов по вертикали */
+    font-size: 1.8em;
+}
+
+#checkout-link {
+    display: none; /* Ссылка скрыта по умолчанию */
+    padding: 10px 20px; /* Внутренние отступы ссылки */
+    background-color: #fb4e4e6c; /* Фон ссылки */
+    color: white; /* Цвет текста ссылки */
+    text-decoration: none; /* Убирает подчеркивание текста ссылки */
+    font-size: 1.2em; /* Размер шрифта ссылки */
+    margin-left: auto; /* Ссылка выравнивается по правому краю */
+    pointer-events: none; 
+
+}
+
+#checkout-link:hover {
+    background-color: #ff000071; /* Изменение фона ссылки при наведении */
+}
