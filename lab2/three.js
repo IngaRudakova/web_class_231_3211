@@ -4,8 +4,10 @@
 // сделать красивое "редактировать"
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Ключ API для доступа к данным блюд
     const apiKey = '65f931a2-29e2-4ca0-b490-5a19bb332145';
 
+    // Объект для хранения названий блюд по категориям
     const dishTitles = {
         soup: {},
         mainCourse: {},
@@ -14,42 +16,55 @@ document.addEventListener('DOMContentLoaded', () => {
         dessert: {}
     };
 
+    // Массив для хранения заказов
     let orders = [];
 
+    // Объект для хранения цен всех блюд
     const allDishPrice = {}
 
+    // Асинхронная функция для загрузки блюд
     async function loadDishes() {
         try {
+            // Отправка запроса на сервер для получения данных блюд
             const response = await fetch(`https://edu.std-900.ist.mospolytech.ru/labs/api/dishes?api_key=${apiKey}`);
+            // Проверка успешности запроса
             if (!response.ok) {
                 throw new Error('Ошибка при загрузке блюд');
             }
 
+            // Преобразование ответа в формат JSON
             const dishes = await response.json();
             console.log('DISHES', dishes);
 
+            // Перебор каждого блюда и добавление его в соответствующую категорию
             dishes.forEach(dish => {
                 let category = dish.category;
-                
+
+                // Преобразование категории 'main-course' в 'mainCourse'
                 if (category === 'main-course') {
                     category = 'mainCourse';
                 }
 
+                // Проверка наличия категории в объекте dishTitles
                 if (!dishTitles[category]) {
                     console.warn(`Неизвестная категория блюда: ${category}`);
                     return;
                 }
 
+                // Добавление названия блюда в соответствующую категорию
                 dishTitles[category][dish.id] = dish.name;
-                
+
             });
+
+            // Перебор каждого блюда и добавление его цены в объект allDishPrice
             dishes.forEach(dish => {
                 allDishPrice[dish.id] = dish.price;
-                
+
             });
             console.log('DISHPR', allDishPrice)
 
         } catch (error) {
+            // Обработка ошибок и вывод сообщения об ошибке в консоль
             console.error('Ошибка:', error);
             showNotification('Ошибка при загрузке блюд');
         }
@@ -371,45 +386,77 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('cancelEditOrder').addEventListener('click', closeModal);
     document.getElementById('closeViewModal').addEventListener('click', closeModal);
 
-    document.getElementById('saveEditOrder').addEventListener('click', async () => {
-        const orderId = document.getElementById('saveEditOrder').getAttribute('data-order-id');
-        const formData = new FormData(document.getElementById('editOrderForm'));
-        const orderData = {
-            full_name: formData.get('full_name'),
-            email: formData.get('email'),
-            phone: formData.get('phone'),
-            delivery_address: formData.get('delivery_address'),
-            delivery_type: formData.get('delivery_type'),
-            delivery_time: formData.get('delivery_time'),
-            comment: formData.get('comment'),
-            soup_id: formData.get('soup_id'),
-            main_course_id: formData.get('main_course_id'),
-            salad_id: formData.get('salad_id'),
-            drink_id: formData.get('drink_id'),
-            dessert_id: formData.get('dessert_id')
-        };
+    //Если передать в конструктор элемент HTML-формы form, то создаваемый объект автоматически прочитает из неё поля.
+//Его особенность заключается в том,
+//  что методы для работы с сетью, например fetch, позволяют указать объект FormData в свойстве тела запроса body.
 
-        try {
-            const response = await fetch(`https://edu.std-900.ist.mospolytech.ru/labs/api/orders/${orderId}?api_key=${apiKey}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(orderData)
-            });
+// сервер видит как обычная отправка формы и не обязательно прописывать все поля так как берется из штмл файл 
 
-            if (!response.ok) {
-                throw new Error('Ошибка при обновлении заказа');
-            }
 
-            showNotification('Заказ успешно обновлен');
-            closeModal();
-            loadOrders();
-        } catch (error) {
-            console.error('Ошибка:', error);
-            showNotification('Ошибка при обновлении заказа');
+
+// Объекты FormData используются, 
+// чтобы взять данные из HTML-формы и отправить их с помощью fetch или 
+// другого метода для работы с сетью.
+
+// Мы можем создать такой объект уже с данными,
+//  передав в конструктор HTML-форму – new FormData(form),
+//   или же можно создать объект вообще без формы и затем добавить к нему поля с помощью методов
+    // Добавление обработчика события для кнопки сохранения изменений заказа
+document.getElementById('saveEditOrder').addEventListener('click', async () => {
+    // Получение ID заказа из атрибута data-order-id кнопки
+    const orderId = document.getElementById('saveEditOrder').getAttribute('data-order-id');
+
+    // Создание объекта FormData из формы редактирования заказа
+    const formData = new FormData(document.getElementById('editOrderForm'));
+
+    // Создание объекта с данными заказа на основе данных из формы
+    const orderData = {
+        full_name: formData.get('full_name'), // Получение полного имени
+        email: formData.get('email'), // Получение email
+        phone: formData.get('phone'), // Получение телефона
+        delivery_address: formData.get('delivery_address'), // Получение адреса доставки
+        delivery_type: formData.get('delivery_type'), // Получение типа доставки
+        delivery_time: formData.get('delivery_time'), // Получение времени доставки
+        comment: formData.get('comment'), // Получение комментария
+        soup_id: formData.get('soup_id'), // Получение ID супа
+        main_course_id: formData.get('main_course_id'), // Получение ID основного блюда
+        salad_id: formData.get('salad_id'), // Получение ID салата
+        drink_id: formData.get('drink_id'), // Получение ID напитка
+        dessert_id: formData.get('dessert_id') // Получение ID десерта
+    };
+
+    try {
+        // Отправка запроса на сервер для обновления данных заказа
+        const response = await fetch(`https://edu.std-900.ist.mospolytech.ru/labs/api/orders/${orderId}?api_key=${apiKey}`, {
+            method: 'PUT', // Метод запроса - PUT (обновление данных)
+            headers: {
+                'Content-Type': 'application/json' // Установка заголовка Content-Type для отправки данных в формате JSON
+            },
+            body: JSON.stringify(orderData) // Преобразование объекта orderData в строку JSON и отправка в теле запроса
+        });
+
+        // Проверка успешности запроса
+        if (!response.ok) {
+            throw new Error('Ошибка при обновлении заказа'); // Генерация ошибки, если запрос не удался
         }
-    });
+
+        // Отображение уведомления об успешном обновлении заказа
+        showNotification('Заказ успешно обновлен');
+
+        // Закрытие модального окна редактирования заказа
+        closeModal();
+
+        // Перезагрузка списка заказов
+        loadOrders();
+    } catch (error) {
+        // Обработка ошибок и вывод сообщения об ошибке в консоль
+        console.error('Ошибка:', error);
+
+        // Отображение уведомления об ошибке при обновлении заказа
+        showNotification('Ошибка при обновлении заказа');
+    }
+});
+
 
     document.getElementById('confirmDeleteOrder').addEventListener('click', async () => {
         const orderId = document.getElementById('confirmDeleteOrder').getAttribute('data-order-id');
